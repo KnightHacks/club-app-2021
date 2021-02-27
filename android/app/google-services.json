@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "885184556136",
+    "project_id": "club-app-2021",
+    "storage_bucket": "club-app-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885184556136:android:5aa2c7f453e132b0ba9fdd",
+        "android_client_info": {
+          "package_name": "org.KnightHacks.club_app_2021"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885184556136-up7u1rsvntjo3e42l7v6c3p1vlh802h4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzDF-EI8eKa19VQy9gtY9GSUgNNw2iLpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885184556136-up7u1rsvntjo3e42l7v6c3p1vlh802h4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "885184556136-ap01ao70q48pm8l11s24tlaeaf3cnu4b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.KnightHacks.clubApp2021"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
