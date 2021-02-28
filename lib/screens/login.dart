@@ -13,41 +13,7 @@ class _LoginState extends State<Login> {
         title: Text("Test"),
       ),
       body: SafeArea(
-        child: Column(
-          // This is a place holder
-          children: [
-            RaisedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, "/Register1");
-                },
-                child: Text("Go to Screen 1"),
-              ),
-            RaisedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, "/Register2");
-                },
-                child: Text("Go to Screen 1"),
-              ),
-            RaisedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, "/Home");
-                },
-                child: Text("Go to Screen 1"),
-              ),
-            RaisedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, "/AccountView");
-                },
-                child: Text("Go to Screen 1"),
-              ),
-            RaisedButton(
-                onPressed: (){
-                  Navigator.pushNamed(context, "/AccountEdit");
-                },
-                child: Text("Go to Screen 1"),
-              ),
-          ],
-        )
+        child: Column()
       ),
     );
   }

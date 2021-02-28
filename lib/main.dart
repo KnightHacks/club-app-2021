@@ -1,4 +1,3 @@
-import 'package:club_app_2021/screens/faq.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/screens/login.dart';
 import 'package:club_app_2021/screens/register1.dart';
