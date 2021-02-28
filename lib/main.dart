@@ -1,3 +1,4 @@
+import 'package:club_app_2021/screens/faq.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/screens/login.dart';
 import 'package:club_app_2021/screens/register1.dart';
@@ -6,6 +7,7 @@ import 'package:club_app_2021/screens/home.dart';
 import 'package:club_app_2021/screens/accountview.dart';
 import 'package:club_app_2021/screens/accountedit.dart';
 import 'package:club_app_2021/screens/error.dart';
+import 'package:club_app_2021/screens/faq.dart';
 
 
 void main() {
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
         "/Home" : (context) => Home(),
         "/AccountView" : (context) => AccountView(),
         "/AccountEdit" : (context) => AccountEdit(),
+        "/FAQ" : (context) => FAQ(),
         "/Error" : (context) => Error()
       },
     );
