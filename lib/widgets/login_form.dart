@@ -70,6 +70,10 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final inputBorder = OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30)
+    );
+
     return Form(
       key: _formKey,
       child: Column(
@@ -82,7 +86,7 @@ class _LoginFormState extends State<LoginForm> {
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
               labelText: "Email",
-              border: OutlineInputBorder()
+              border: inputBorder
             ),
           ),
           SizedBox(height: 20),
@@ -92,7 +96,7 @@ class _LoginFormState extends State<LoginForm> {
             obscureText: true,
             decoration: InputDecoration(
               labelText: "Password",
-              border: OutlineInputBorder()
+              border: inputBorder
             ),
           ),
           SizedBox(height: 20),

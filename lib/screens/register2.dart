@@ -68,7 +68,7 @@ class _Register2State extends State<Register2> {
           ),
           // Creates button for Going Back to Register 1
           RoundedButton(
-            child: Text("Register"),
+            child: Text("Go Back"),
             buttonColor: Colors.blue,
             onPressed: (){
               // Navigator.popAndPushNamed(context, 'Register1');
