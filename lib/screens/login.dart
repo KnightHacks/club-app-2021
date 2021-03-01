@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/LoginContainer.dart';
+import '../widgets/LoginForm.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _LoginState extends State<Login> {
         title: Text("Login"),
       ),
       body: SafeArea(
-        child: LoginContainer()
+        child: LoginForm()
       ),
     );
   }
