@@ -97,8 +97,8 @@ class _LoginFormState extends State<LoginForm> {
           ),
           SizedBox(height: 20),
           RoundedButton(
-              onPressed: () => _login(context),
-              child: Text("Login"),
+            onPressed: () => _login(context),
+            child: Text("Login"),
           )
         ],
       ),
