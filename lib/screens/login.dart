@@ -14,7 +14,10 @@ class _LoginState extends State<Login> {
         title: Text("Login"),
       ),
       body: SafeArea(
-        child: LoginForm()
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 50),
+          child: LoginForm(),
+        )
       ),
     );
   }

@@ -8,13 +8,6 @@ class LoginForm extends StatefulWidget {
   _LoginFormState createState() => _LoginFormState();
 }
 
-class ValidationResult {
-  bool success = false;
-  String message = "";
-
-  ValidationResult({this.success, this.message});
-}
-
 class _LoginFormState extends State<LoginForm> {
 
   final _formKey = GlobalKey<FormState>();
@@ -29,20 +22,14 @@ class _LoginFormState extends State<LoginForm> {
     if (value.isEmpty) {
       return "Please enter Email";
     }
-
     if (!EmailValidator.validate(value)) {
       return "Please enter valid email";
     }
-
     return null;
   };
 
-  Future<AuthResult> _sendLogin(String email, String password) {
 
-
-  }
-
-  Future<String> _login(BuildContext context) async {
+  void _login(BuildContext context) async {
 
     if (!_formKey.currentState.validate()) {
       return null;
@@ -52,9 +39,11 @@ class _LoginFormState extends State<LoginForm> {
     final String password = _passwordController.text;
 
     try {
+      // Try to sign user in.
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email,
           password: password);
     } catch(e) {
+      // Show error dialog
       showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -67,16 +56,14 @@ class _LoginFormState extends State<LoginForm> {
             );
           },
       );
-      print(e.message);
     }
-
-    Scaffold.of(context)
-    .showSnackBar(SnackBar(content: Text("Logging In...")));
   }
 
   @override
   void dispose() {
+    // Dispose any controllers created.
     _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -93,15 +80,18 @@ class _LoginFormState extends State<LoginForm> {
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-                  labelText: "Email"
+              labelText: "Email",
+              border: OutlineInputBorder()
             ),
           ),
+          SizedBox(height: 20),
           TextFormField(
             validator: _validatePassword,
             controller: _passwordController,
             obscureText: true,
             decoration: InputDecoration(
-                labelText: "Password"
+              labelText: "Password",
+              border: OutlineInputBorder()
             ),
           ),
           SizedBox(height: 20),
