@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:club_app_2021/components/rounded_button.dart';
+import 'package:club_app_2021/widgets/rounded_button.dart';
 
 class Register2 extends StatefulWidget {
 
@@ -56,9 +56,9 @@ class _Register2State extends State<Register2> {
           ),
           // Creates button for Registration
           RoundedButton(
-            buttonText: 'Register',
+            child: Text("Register"),
             buttonColor: Colors.pinkAccent,
-            buttonBehavior: () async {
+            onPressed: () async {
               if(confirmPassword == password)
                 {
                  final user = await _auth.createUserWithEmailAndPassword(email: email, password: password);
@@ -68,9 +68,9 @@ class _Register2State extends State<Register2> {
           ),
           // Creates button for Going Back to Register 1
           RoundedButton(
-            buttonText: 'Go Back',
+            child: Text("Register"),
             buttonColor: Colors.blue,
-            buttonBehavior: (){
+            onPressed: (){
               // Navigator.popAndPushNamed(context, 'Register1');
             },
           ),
