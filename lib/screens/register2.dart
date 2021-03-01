@@ -59,11 +59,10 @@ class _Register2State extends State<Register2> {
             child: Text("Register"),
             buttonColor: Colors.pinkAccent,
             onPressed: () async {
-              if(confirmPassword == password)
-                {
-                 final user = await _auth.createUserWithEmailAndPassword(email: email, password: password);
-                 Navigator.popAndPushNamed(context, '/Login');
-                }
+              if(confirmPassword == password) {
+                  await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                  Navigator.popAndPushNamed(context, '/Login');
+              }
             },
           ),
           // Creates button for Going Back to Register 1
@@ -77,7 +76,6 @@ class _Register2State extends State<Register2> {
         ],
       )
       ),
-
     );
   }
 
