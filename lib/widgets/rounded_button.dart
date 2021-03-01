@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class RoundedButton extends StatelessWidget {
   const RoundedButton({
     @required this.child,
-    this.buttonColor = Colors.blue,
+    this.buttonColor,
     this.height = 50.0,
     @required this.onPressed
   });
@@ -14,7 +14,8 @@ class RoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      color: buttonColor,
+      // If a color was not provided use the theme colors.
+      color: buttonColor ?? Theme.of(context).buttonColor,
       onPressed: onPressed,
       minWidth: 200.0,
       height: height,
