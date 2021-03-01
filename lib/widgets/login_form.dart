@@ -58,6 +58,9 @@ class _LoginFormState extends State<LoginForm> {
           },
       );
     }
+
+    // Move to home page.
+    Navigator.popAndPushNamed(context, "/AccountView");
   }
 
   @override
