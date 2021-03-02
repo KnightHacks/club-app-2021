@@ -6,7 +6,7 @@ import 'package:club_app_2021/model/FAQListItem.dart';
 import 'package:club_app_2021/widgets/faq_list.dart';
 
 class FAQ extends StatefulWidget {
-  static String id = "FAQ";
+  static const String id = "FAQ";
 
   @override
   _FAQState createState() => _FAQState();

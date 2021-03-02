@@ -4,7 +4,7 @@ import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/login.dart';
 
 class Register2 extends StatefulWidget {
-  static String id = "Register2";
+  static const String id = "Register2";
 
   @override
   _Register2State createState() => _Register2State();

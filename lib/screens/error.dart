@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Error extends StatefulWidget {
-  static String id = "Error";
+  static const String id = "Error";
 
   @override
   _ErrorState createState() => _ErrorState();
