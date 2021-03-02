@@ -1,14 +1,14 @@
 [
   {
-    "question": "What does UCF stand for?",
-    "answer": "University of Central Florida"
-  },
-  {
     "question": "What is KnightHacks?",
-    "answer": "KnightHacks is an organization that host events such as hackathons, and workshops"
+    "answer": "KnightHacks is a student run organization at UCF. We're responsible for organizing and hosting KnightHacks, one of the biggest hackathons in Florida!"
   },
   {
-    "question": "How do I join?",
-    "answer": "You can visit our website or join our discord"
+    "question": "Great! How do I join?",
+    "answer": "If you're a UCF student you can join for free. Check it out at linktree.com/knighthacks."
+  },
+  {
+    "question": "What can I do if I join KnightHacks?",
+    "answer": "You can learn industry level technologies like React and Flutter!"
   }
 ]
