@@ -1,8 +1,9 @@
-import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:club_app_2021/widgets/rounded_button.dart';
+import 'package:club_app_2021/screens/accountview.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -60,7 +61,7 @@ class _LoginFormState extends State<LoginForm> {
     }
 
     // Move to home page.
-    Navigator.popAndPushNamed(context, "/AccountView");
+    Navigator.popAndPushNamed(context, AccountView.id);
   }
 
   @override

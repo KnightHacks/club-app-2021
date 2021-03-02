@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Register1 extends StatefulWidget {
+  static String id = "Register1";
   @override
   _Register1State createState() => _Register1State();
 }

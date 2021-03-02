@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
+import 'package:club_app_2021/screens/login.dart';
 
 class Register2 extends StatefulWidget {
-
-  final String pathName = "/Register2";
+  static String id = "Register2";
 
   @override
   _Register2State createState() => _Register2State();
@@ -61,7 +61,7 @@ class _Register2State extends State<Register2> {
             onPressed: () async {
               if(confirmPassword == password) {
                   await _auth.createUserWithEmailAndPassword(email: email, password: password);
-                  Navigator.popAndPushNamed(context, '/Login');
+                  Navigator.popAndPushNamed(context, Login.id);
               }
             },
           ),

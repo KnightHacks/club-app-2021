@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
+  static String id = "Home";
   @override
   _HomeState createState() => _HomeState();
 }

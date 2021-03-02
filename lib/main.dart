@@ -18,17 +18,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      initialRoute: "/",
+      initialRoute: Login.id,
       routes: {
-        "/" : (context) => Login(),
-        "/Login" : (context) => Login(),
-        "/Register1" : (context) => Register1(),
-        "/Register2" : (context) => Register2(),
-        "/Home" : (context) => Home(),
-        "/AccountView" : (context) => AccountView(),
-        "/AccountEdit" : (context) => AccountEdit(),
-        "/FAQ" : (context) => FAQ(),
-        "/Error" : (context) => Error()
+        Login.id : (context) => Login(),
+        Register1.id : (context) => Register1(),
+        Register2.id : (context) => Register2(),
+        Home.id : (context) => Home(),
+        AccountView.id : (context) => AccountView(),
+        AccountEdit.id : (context) => AccountEdit(),
+        FAQ.id : (context) => FAQ(),
+        Error.id : (context) => Error()
       },
     );
   }
