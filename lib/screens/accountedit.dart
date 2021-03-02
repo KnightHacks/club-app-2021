@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AccountEdit extends StatefulWidget {
+  static const String id = "AccountEdit";
+  
   @override
   _AccountEditState createState() => _AccountEditState();
 }

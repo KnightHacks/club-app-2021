@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AccountView extends StatefulWidget {
+  static const String id = "AccountView";
+
   @override
   _AccountViewState createState() => _AccountViewState();
 }
