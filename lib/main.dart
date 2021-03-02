@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       initialRoute: "/",
       routes: {
-        "/" : (context) => Login(),
+        "/" : (context) => FAQ(),
         "/Login" : (context) => Login(),
         "/Register1" : (context) => Register1(),
         "/Register2" : (context) => Register2(),
