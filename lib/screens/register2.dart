@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/login.dart';
+import 'package:club_app_2021/screens/register1.dart';
 
 class Register2 extends StatefulWidget {
   static const String id = "Register2";
@@ -70,7 +71,7 @@ class _Register2State extends State<Register2> {
             child: Text("Go Back"),
             buttonColor: Colors.blue,
             onPressed: (){
-              // Navigator.popAndPushNamed(context, 'Register1');
+              Navigator.popAndPushNamed(context, Register1.id);
             },
           ),
         ],
