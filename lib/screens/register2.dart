@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/login.dart';
 import 'package:club_app_2021/screens/register1.dart';
+import 'package:club_app_2021/screens/confirm.dart';
 
 class Register2 extends StatefulWidget {
   static const String id = "Register2";
@@ -61,8 +62,18 @@ class _Register2State extends State<Register2> {
             buttonColor: Colors.pinkAccent,
             onPressed: () async {
               if(confirmPassword == password) {
-                  await _auth.createUserWithEmailAndPassword(email: email, password: password);
-                  Navigator.popAndPushNamed(context, Login.id);
+                  AuthResult res = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+                  FirebaseUser user = res.user;
+
+                  try{
+                    await user.sendEmailVerification();
+                  }
+                  catch(e){
+                    print("Something went wrong while sending your email verification.");
+                    print(e.message);
+                  }
+
+                  Navigator.popAndPushNamed(context, Confirm.id);
               }
             },
           ),
