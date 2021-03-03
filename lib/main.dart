@@ -7,7 +7,7 @@ import 'package:club_app_2021/screens/accountview.dart';
 import 'package:club_app_2021/screens/accountedit.dart';
 import 'package:club_app_2021/screens/error.dart';
 import 'package:club_app_2021/screens/faq.dart';
-
+import 'package:club_app_2021/screens/confirm.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +27,8 @@ class MyApp extends StatelessWidget {
         AccountView.id : (context) => AccountView(),
         AccountEdit.id : (context) => AccountEdit(),
         FAQ.id : (context) => FAQ(),
-        Error.id : (context) => Error()
+        Error.id : (context) => Error(),
+        Confirm.id: (context) => Confirm(),
       },
     );
   }

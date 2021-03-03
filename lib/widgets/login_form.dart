@@ -42,8 +42,29 @@ class _LoginFormState extends State<LoginForm> {
 
     try {
       // Try to sign user in.
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email,
+      AuthResult res = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email,
           password: password);
+      
+      FirebaseUser user = res.user;
+
+      if(user.isEmailVerified){
+        // Move to home page.
+        Navigator.popAndPushNamed(context, AccountView.id);
+      }
+      else{
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Please check email for verification link"),
+              actions: <Widget>[
+                new FlatButton(onPressed: () => Navigator.of(context).pop(),
+                    child: Text("Close"))
+              ],
+            );
+          },
+        );
+      }
     } catch(e) {
       // Show error dialog
       showDialog(
@@ -59,9 +80,6 @@ class _LoginFormState extends State<LoginForm> {
           },
       );
     }
-
-    // Move to home page.
-    Navigator.popAndPushNamed(context, AccountView.id);
   }
 
   @override
