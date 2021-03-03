@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark(),
-      initialRoute: Register2.id,
+      initialRoute: Login.id,
       routes: {
         Login.id : (context) => Login(),
         Register1.id : (context) => Register1(),
