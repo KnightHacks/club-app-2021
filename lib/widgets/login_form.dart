@@ -42,8 +42,18 @@ class _LoginFormState extends State<LoginForm> {
 
     try {
       // Try to sign user in.
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email,
+      AuthResult res = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email,
           password: password);
+      
+      FirebaseUser user = res.user;
+
+      // TODO see how to implement this when we are doing pop and push
+      // if(user.isEmailVerified){
+
+      // }
+      // else{
+
+      // }
     } catch(e) {
       // Show error dialog
       showDialog(
