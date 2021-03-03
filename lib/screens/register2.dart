@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
-import 'package:club_app_2021/screens/login.dart';
 import 'package:club_app_2021/screens/register1.dart';
 import 'package:club_app_2021/screens/confirm.dart';
 
