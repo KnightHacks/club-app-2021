@@ -1,3 +1,4 @@
+import 'package:club_app_2021/widgets/rounded_input.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -92,34 +93,25 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    final inputBorder = OutlineInputBorder(
-        borderRadius: BorderRadius.circular(30)
-    );
-
     return Form(
       key: _formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          TextFormField(
+          RoundedTextInput(
             validator: _validateEmail,
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: "Email",
-              border: inputBorder
-            ),
+            labelText: "Email",
+            autocorrect: false,
           ),
           SizedBox(height: 20),
-          TextFormField(
+          RoundedTextInput(
             validator: _validatePassword,
             controller: _passwordController,
+            labelText: "Password",
             obscureText: true,
-            decoration: InputDecoration(
-              labelText: "Password",
-              border: inputBorder
-            ),
           ),
           SizedBox(height: 20),
           RoundedButton(
