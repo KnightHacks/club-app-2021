@@ -2,54 +2,51 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AccountDrawer extends StatelessWidget {
+class AccountDrawer extends StatefulWidget {
+  @override
+  _AccountDrawerState createState() => _AccountDrawerState();
+}
+
+class _AccountDrawerState extends State<AccountDrawer> {
 
   final _auth = FirebaseAuth.instance;
   FirebaseUser _user;
 
-  void logout(FirebaseUser user) {
-    _auth.signOut();
+  void logout(BuildContext context) {
+    _auth.signOut().then((value) => {
+      // Move back to the Login page.
+      Navigator.popAndPushNamed(context, "Login")
+    });
+  }
 
-    // Move back to the Login page.
+  @override
+  void initState() {
+    super.initState();
+    try {
+      _auth.currentUser()
+          .then((user) => setState(() => _user = user));
+    } catch(e) {
+      print(e);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-
-
-    try {
-      _auth.currentUser()
-          .then((user) => _user);
-    } catch(e) {
-      print(e);
-    }
-
     return Drawer(
       child: ListView(
         children: <Widget>[
           DrawerHeader(
             child: Image.asset("assets/knightHacksLogoGold.png"),
             decoration: BoxDecoration(
-              color: Colors.deepPurple
+                color: Colors.deepPurple
             ),
           ),
           ListTile(
-            title: Text(_user?.displayName ?? "Display Name",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24
-              ),
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Text("email@email.com"),
+            title: Text(_user?.email ?? "email@email.com"),
             leading: Icon(Icons.email),
           ),
-          FlatButton( // Left Justify
-              onPressed: () {
-                // Log the user out.
-              },
+          FlatButton(
+              onPressed: () => logout(context),
               child: Text("Logout", textAlign: TextAlign.left,)
           )
         ],
