@@ -82,7 +82,6 @@ class _LoginFormState extends State<LoginForm> {
     }
   }
 
-  @override
   void dispose() {
     // Dispose any controllers created.
     _emailController.dispose();

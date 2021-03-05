@@ -9,6 +9,8 @@ import 'package:club_app_2021/screens/error.dart';
 import 'package:club_app_2021/screens/faq.dart';
 import 'package:club_app_2021/screens/confirm.dart';
 
+import 'screens/register2.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -17,8 +19,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
-      initialRoute: Login.id,
+     theme: ThemeData.dark().copyWith(
+       primaryColor: Color(0xFF1A1843),
+       scaffoldBackgroundColor: Color(0xFF1A1843),
+       accentColor:  Color(0xFFb7517c),
+       toggleableActiveColor: Color(0xFF36328B),
+       //cardColor: Colors.white,
+       //inactive color
+
+     ),
+      initialRoute: Register2.id,
       routes: {
         Login.id : (context) => Login(),
         Register1.id : (context) => Register1(),

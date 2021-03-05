@@ -21,44 +21,72 @@ class _Register2State extends State<Register2> {
 
   @override
   Widget build(BuildContext context) {
+    final inputBorder = OutlineInputBorder(
+        borderRadius: BorderRadius.circular(30)
+    );
     return Scaffold(
+
       appBar: AppBar(
         title: Text("Test"),
       ),
-      body: SafeArea(child: Column(
+
+      body: SafeArea(child:Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          // contains email
-          TextField(
+          // contains knighthacks logo
+          SizedBox(height: 30),
+        /*  CircleAvatar(
+            radius: 70,
+            backgroundImage: AssetImage('assets/sword.png'),
+          ),
+          SizedBox(height: 40),*/
+          TextFormField(
+            //contains email
+            decoration: InputDecoration(
+                labelText: "Enter Your Email",
+                border: inputBorder
+            ),
             keyboardType: TextInputType.emailAddress,
             textAlign: TextAlign.center,
             onChanged: (value){
               email = value;
             },
-            // TODO hint Text "Enter Your Email"
           ),
+          SizedBox(height: 20),
+
           // contains password
-          TextField(
+          TextFormField(
+            decoration: InputDecoration(
+                labelText: "Enter Your Password",
+                border: inputBorder
+            ),
+
             obscureText: true,
             textAlign: TextAlign.center,
             onChanged: (value){
               password = value;
             },
           ),
-
+          SizedBox(height: 20),
           // contains confirmation of password
-          TextField(
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: "Confirm Password",
+                border: inputBorder
+
+            ),
             obscureText: true,
             textAlign: TextAlign.center,
             onChanged: (value){
               confirmPassword = value;
             },
           ),
+          SizedBox(height: 20),
           // Creates button for Registration
           RoundedButton(
             child: Text("Register"),
-            buttonColor: Colors.pinkAccent,
+            buttonColor: Color(0xFFb7517c),
             onPressed: () async {
               if(confirmPassword == password) {
                   AuthResult res = await _auth.createUserWithEmailAndPassword(email: email, password: password);
@@ -76,14 +104,16 @@ class _Register2State extends State<Register2> {
               }
             },
           ),
+          SizedBox(height: 20),
           // Creates button for Going Back to Register 1
           RoundedButton(
             child: Text("Go Back"),
-            buttonColor: Colors.blue,
+            buttonColor: Colors.amber,
             onPressed: (){
               Navigator.popAndPushNamed(context, Register1.id);
             },
           ),
+          SizedBox(height: 20),
         ],
       )
       ),
