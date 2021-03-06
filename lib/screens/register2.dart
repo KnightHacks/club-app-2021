@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/register1.dart';
 import 'package:club_app_2021/screens/confirm.dart';
+import '../widgets/title_bar.dart';
 
 class Register2 extends StatefulWidget {
   static const String id = "Register2";
@@ -23,13 +24,7 @@ class _Register2State extends State<Register2> {
     final inputBorder =
         OutlineInputBorder(borderRadius: BorderRadius.circular(30));
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Image.asset(
-          "assets/knightHacksLogoGold.png",
-          width: 200,
-        ),
-      ),
+      appBar: titleBar,
 
       body: SafeArea(
           child: Container(
