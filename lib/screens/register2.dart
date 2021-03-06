@@ -1,3 +1,4 @@
+import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
@@ -7,8 +8,12 @@ import 'package:club_app_2021/screens/confirm.dart';
 class Register2 extends StatefulWidget {
   static const String id = "Register2";
 
+  final KnightHackUser user;
+
+  Register2({this.user});
+
   @override
-  _Register2State createState() => _Register2State();
+  _Register2State createState() => _Register2State(user);
 }
 
 class _Register2State extends State<Register2> {
@@ -17,7 +22,11 @@ class _Register2State extends State<Register2> {
   String email;
   String password;
   String confirmPassword;
+  KnightHackUser _user;
 
+  _Register2State(KnightHackUser user) {
+    this._user = user;
+  }
 
   @override
   Widget build(BuildContext context) {
