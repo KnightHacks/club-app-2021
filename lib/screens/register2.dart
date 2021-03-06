@@ -26,9 +26,12 @@ class _Register2State extends State<Register2> {
     );
     return Scaffold(
 
-      appBar: AppBar(
-        title: Text("Test"),
-      ),
+      // appBar: AppBar(
+      //   title: Image.asset(
+      //     "assets/knightHacksLogoGold.png",
+      //     width: 150,
+      //   ),
+      // ),
 
       body: SafeArea(child:Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,15 +39,12 @@ class _Register2State extends State<Register2> {
         children: <Widget>[
           // contains knighthacks logo
           SizedBox(height: 30),
-        /*  CircleAvatar(
-            radius: 70,
-            backgroundImage: AssetImage('assets/sword.png'),
-          ),
-          SizedBox(height: 40),*/
+          Image.asset("assets/sword.png"),
+          SizedBox(height: 40),
           TextFormField(
             //contains email
             decoration: InputDecoration(
-                labelText: "Enter Your Email",
+                labelText: "Email",
                 border: inputBorder
             ),
             keyboardType: TextInputType.emailAddress,
@@ -58,7 +58,7 @@ class _Register2State extends State<Register2> {
           // contains password
           TextFormField(
             decoration: InputDecoration(
-                labelText: "Enter Your Password",
+                labelText: "Password",
                 border: inputBorder
             ),
 
