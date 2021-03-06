@@ -33,8 +33,13 @@ class _FAQState extends State<FAQ> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("FAQ"),
+        elevation: 0,
+        title: Image.asset(
+          "assets/knightHacksLogoGold.png",
+          width: 200,
+        ),
       ),
+
       body: SafeArea(
         child: FAQList(key: UniqueKey(), items: _items),
       ),
