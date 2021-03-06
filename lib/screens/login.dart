@@ -12,13 +12,22 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Login"),
-      ),
+      // appBar: AppBar(
+      //   title: Image.asset(
+      //     "assets/knightHacksLogoGold.png",
+      //     width: 150.0,
+      //   ),
+      //   elevation: 0,
+      // ),
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 50),
-          child: LoginForm(),
+          child: Column(
+            children: [
+              Expanded(child: Image.asset("assets/sword.png")),
+              Expanded(child: LoginForm()),
+            ],
+          ),
         )
       ),
     );

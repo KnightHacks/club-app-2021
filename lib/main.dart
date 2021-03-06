@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
        //inactive color
 
      ),
-      initialRoute: Register2.id,
+      initialRoute: Login.id,
       routes: {
         Login.id : (context) => Login(),
         Register1.id : (context) => Register1(),
