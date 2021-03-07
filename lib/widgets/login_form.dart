@@ -1,3 +1,4 @@
+import 'package:club_app_2021/screens/register1.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -94,31 +95,41 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          RoundedTextInput(
-            validator: _validateEmail,
-            controller: _emailController,
-            keyboardType: TextInputType.emailAddress,
-            labelText: "Email",
-            autocorrect: false,
-          ),
-          SizedBox(height: 20),
-          RoundedTextInput(
-            validator: _validatePassword,
-            controller: _passwordController,
-            labelText: "Password",
-            obscureText: true,
-          ),
-          SizedBox(height: 20),
-          RoundedButton(
-            onPressed: () => _login(context),
-            child: Text("Login"),
-          )
-        ],
-      ),
+      child: Center(
+        child: Container(
+          height: 400,
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           crossAxisAlignment: CrossAxisAlignment.center,
+           children: [
+             RoundedTextInput(
+               validator: _validateEmail,
+               controller: _emailController,
+               keyboardType: TextInputType.emailAddress,
+               labelText: "Email",
+               autocorrect: false,
+             ),
+             SizedBox(height: 20),
+             RoundedTextInput(
+               validator: _validatePassword,
+               controller: _passwordController,
+               labelText: "Password",
+               obscureText: true,
+             ),
+             SizedBox(height: 20),
+             RoundedButton(
+               onPressed: () => _login(context),
+               child: Text("Login"),
+             ),
+             SizedBox(height: 20),
+             RoundedButton(
+                 child: Text("Register"),
+                 onPressed: () => Navigator.pushNamed(context, Register1.id)
+             )
+           ],
+         ),
+        ),
+      )
     );
   }
 }
