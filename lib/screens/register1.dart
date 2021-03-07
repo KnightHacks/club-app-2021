@@ -1,5 +1,4 @@
 import 'package:club_app_2021/model/KnightHacksUser.dart';
-import 'package:club_app_2021/screens/login.dart';
 import 'package:club_app_2021/screens/register2.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
