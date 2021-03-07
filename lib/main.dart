@@ -9,8 +9,6 @@ import 'package:club_app_2021/screens/error.dart';
 import 'package:club_app_2021/screens/faq.dart';
 import 'package:club_app_2021/screens/confirm.dart';
 
-import 'screens/register2.dart';
-
 void main() {
   runApp(MyApp());
 }
