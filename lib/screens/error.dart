@@ -1,3 +1,4 @@
+import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 
 class Error extends StatefulWidget {
@@ -11,9 +12,7 @@ class _ErrorState extends State<Error> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Test"),
-      ),
+      appBar: titleBar,
       body: SafeArea(
         child: Column()
       ),
