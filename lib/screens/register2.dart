@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
@@ -7,17 +9,26 @@ import 'package:club_app_2021/screens/confirm.dart';
 class Register2 extends StatefulWidget {
   static const String id = "Register2";
 
+  final KnightHackUser user;
+
+  Register2({this.user});
+
   @override
-  _Register2State createState() => _Register2State();
+  _Register2State createState() => _Register2State(user);
 }
 
 class _Register2State extends State<Register2> {
   FirebaseAuth _auth = FirebaseAuth.instance;
+  final _firestore = Firestore.instance;
 
   String email;
   String password;
   String confirmPassword;
+  KnightHackUser _user;
 
+  _Register2State(KnightHackUser user) {
+    this._user = user;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +103,16 @@ class _Register2State extends State<Register2> {
                   AuthResult res = await _auth.createUserWithEmailAndPassword(email: email, password: password);
                   FirebaseUser user = res.user;
 
+                  _firestore.collection("user").add({
+                    'fullName': _user.fullName,
+                    'uid': user.uid,
+                    'street': _user.street,
+                    'apartment': _user.apartment,
+                    'state': _user.state,
+                    'zip': _user.zip,
+                    'shirtSize': _user.shirtSize
+                  });
+
                   try{
                     await user.sendEmailVerification();
                   }
@@ -109,9 +130,8 @@ class _Register2State extends State<Register2> {
           RoundedButton(
             child: Text("Go Back"),
             buttonColor: Colors.amber,
-            onPressed: (){
-              Navigator.popAndPushNamed(context, Register1.id);
-            },
+            onPressed: ()  {print(_user.fullName);Navigator.popAndPushNamed(context, Register1.id);
+            }
           ),
           SizedBox(height: 20),
         ],
