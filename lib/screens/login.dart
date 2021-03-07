@@ -1,8 +1,6 @@
-import 'package:club_app_2021/screens/register1.dart';
 import 'package:flutter/material.dart';
 import '../widgets/login_form.dart';
-import '../widgets/rounded_button.dart';
-import '../screens/register2.dart';
+
 
 class Login extends StatefulWidget {
   static const String id = "Login";
