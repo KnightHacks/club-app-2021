@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
-import 'package:club_app_2021/screens/home.dart';
+import 'package:club_app_2021/screens/accountview.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -51,7 +51,7 @@ class _LoginFormState extends State<LoginForm> {
 
       if(user.isEmailVerified){
         // Move to home page.
-        Navigator.popAndPushNamed(context, Home.id);
+        Navigator.popAndPushNamed(context, AccountView.id);
       }
       else{
         showDialog(
