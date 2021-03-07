@@ -1,3 +1,4 @@
+import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/login.dart';
@@ -13,6 +14,7 @@ class _ConfirmState extends State<Confirm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: titleBar,
       body: SafeArea(
           child: Column(
         children: [
@@ -35,7 +37,7 @@ class _ConfirmState extends State<Confirm> {
             child: Text(
               "Okay!"
             ),
-          )
+          ),
         ],
       )),
     );
