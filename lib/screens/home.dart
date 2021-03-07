@@ -2,9 +2,6 @@ import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/model/Event.dart';
-import 'package:ical/serializer.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:share/share.dart';
 import 'dart:io';
 
 class Home extends StatefulWidget {
@@ -65,24 +62,6 @@ class _HomeState extends State<Home> {
     super.initState();
     events = allEvents.map((e) => new KHEvent.from(e)).toList();
     print(events);
-  }
-
-  Future<String> get _localPath async {
-    final directory = await getTemporaryDirectory();
-    return directory.path;
-  }
-
-  Future<File> get _localFile async {
-    final path = await _localPath;
-    return File('$path/event.ics');
-  }
-
-  Future<String> writeCalendar(ICalendar calendar) async {
-    final file = await _localFile;
-
-    // Write the file.
-    file.writeAsString(calendar.serialize());
-    return await _localPath + '/event.ics';
   }
 
   @override
