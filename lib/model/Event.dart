@@ -1,14 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:ical/serializer.dart';
 
-class Event {
+class KHEvent {
   String title;
   String description;
   String location;
   DateTime dateTime;
   String presenter;
 
-  Event({
+  KHEvent({
     this.title,
     this.description,
     this.location,
@@ -16,7 +15,7 @@ class Event {
     this.presenter
   });
 
-  Event.from(Map<String, String> map) {
+  KHEvent.from(Map<String, String> map) {
     title = map["title"];
     description = map["description"];
     location = map["location"];
