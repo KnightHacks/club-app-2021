@@ -2,6 +2,7 @@ import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/model/Event.dart';
+import 'package:club_app_2021/constants.dart';
 
 class Home extends StatefulWidget {
   static const String id = "Home";
@@ -69,21 +70,34 @@ class _HomeState extends State<Home> {
       appBar: titleBar,
       body: SafeArea(
         child: ListView(
-          children: events.map((e) => Column(
-            children: <Widget>[
-              Text(e.title),
-              Text(e.description),
-              FlatButton(onPressed: (){
-                // Share.share("text");
-                final Event event = Event(
-                  title: e.title,
-                  description: e.description,
-                  startDate: e.dateTime,
-                  endDate: e.dateTime,
-                );
-                Add2Calendar.addEvent2Cal(event);
-              }, child: Text('Click me'))
-            ],
+          children: events.map((e) => Card(
+            child: Column(
+              children: <Widget>[
+                Text(
+                    e.title,
+                    style: kCardTitleStyle
+                ),
+                Text(
+                  e.description,
+                  style: kCardDescriptionStyle
+                ),
+                FlatButton(
+                  color: Theme.of(context).accentColor,
+                    onPressed: () {
+                      final Event event = Event(
+                        title: e.title,
+                        description: e.description,
+                        startDate: e.dateTime,
+                        endDate: e.dateTime,
+                      );
+                      Add2Calendar.addEvent2Cal(event);
+                    },
+                    child: Text(
+                  'Add to Calendar',
+                  style: kAddToCalStyle
+                ))
+              ],
+            ),
           )).toList(),
         ),
       ),

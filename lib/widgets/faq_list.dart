@@ -1,5 +1,6 @@
 import 'package:club_app_2021/model/FAQListItem.dart';
 import 'package:flutter/material.dart';
+import 'package:club_app_2021/constants.dart';
 
 class FAQList extends StatefulWidget {
   final List<FAQListItem> items;
@@ -34,13 +35,16 @@ class _FAQListState extends State<FAQList> {
               children: _items.map<ExpansionPanel>((FAQListItem item) {
                 return ExpansionPanel(
                     body: ListTile(
-                      leading: Icon(Icons.format_quote),
-                      title: Text(item.answer),
+                      leading: Icon(Icons.format_quote, color: kIconColor,),
+                      title: Text(
+                        item.answer,
+                        style: kGeneralTextStyle,
+                      ),
                     ),
                     headerBuilder: (BuildContext context, bool isExpanded) {
                       return ListTile(
-                        leading: Icon(Icons.question_answer_outlined),
-                        title: Text(item.question),
+                        leading: Icon(Icons.question_answer_outlined, color: Colors.black,),
+                        title: Text(item.question, style: kGeneralTextStyle),
                       );
                     },
                     isExpanded: item.isExpanded
