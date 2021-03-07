@@ -68,8 +68,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    events = allEvents.map((e) => new Event.from(e)).toList();
-    print(events);
+    events = allEvents.map((e) => Event.from(e)).toList();
   }
 
   @override
