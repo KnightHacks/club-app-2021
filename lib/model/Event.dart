@@ -1,5 +1,3 @@
-import 'package:ical/serializer.dart';
-
 class KHEvent {
   String title;
   String description;
@@ -25,17 +23,5 @@ class KHEvent {
 
   String toString() {
     return title+" "+presenter;
-  }
-
-  ICalendar addToCal() {
-    ICalendar ical = ICalendar();
-    ical.addElement(
-      IEvent(
-        start: this.dateTime,
-        summary: this.title,
-        description: this.description
-      )
-    );
-    return ical;
   }
 }
