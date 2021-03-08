@@ -41,5 +41,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCalendarsUsageDescription</key>
+    <string>To add knighthacks events</string>
+    <key>NSContactsUsageDescription</key>
+    <string>To add knighthacks events</string>
 </dict>
 </plist>
