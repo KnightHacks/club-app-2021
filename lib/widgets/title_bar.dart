@@ -1,10 +1,8 @@
-
 import 'package:flutter/material.dart';
 
-AppBar titleBar =AppBar(
-        elevation: 0,
+AppBar titleBar = AppBar(
         title: Image.asset(
           "assets/knightHacksLogoGold.png",
-          width: 200,
+          width: 150,
         ),
       );

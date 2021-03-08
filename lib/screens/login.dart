@@ -19,7 +19,11 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               Expanded(child: Image.asset("assets/sword.png")),
-              Expanded(child: LoginForm()),
+              Expanded(child:
+                SingleChildScrollView(child:
+                  LoginForm()
+                )
+              ),
               // RoundedButton(
               //       child: Text("Register"),
               //       onPressed: (){
