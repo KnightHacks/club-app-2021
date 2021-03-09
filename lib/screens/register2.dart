@@ -24,10 +24,10 @@ class _Register2State extends State<Register2> {
   FirebaseAuth _auth = FirebaseAuth.instance;
   final _firestore = Firestore.instance;
 
-  String email;
-  String password;
-  String confirmPassword;
   KnightHackUser _user;
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -67,9 +67,7 @@ class _Register2State extends State<Register2> {
                       keyboardType: TextInputType.emailAddress,
                       textAlign: TextAlign.center,
                       validator: _validateEmail,
-                      onChanged: (value) {
-                        email = value;
-                      },
+                      controller: _emailController
                     ),
                     SizedBox(height: 10),
 
@@ -79,9 +77,7 @@ class _Register2State extends State<Register2> {
                           labelText: "Password", border: inputBorder),
                       obscureText: true,
                       textAlign: TextAlign.center,
-                      onChanged: (value) {
-                        password = value;
-                      },
+                      controller: _passwordController
                     ),
                     SizedBox(height: 10),
                     // contains confirmation of password
@@ -92,9 +88,8 @@ class _Register2State extends State<Register2> {
                       textAlign: TextAlign.center,
                       validator: (value) {
                         print("conform password is: "+value);
-                        return password == value ? null : "Passwords don't match";
+                        return _passwordController.text == value ? null : "Passwords don't match";
                       },
-                      onChanged: (value) => confirmPassword = value,
                     ),
                     SizedBox(height: 20),
                     // Creates button for Registration
@@ -106,7 +101,7 @@ class _Register2State extends State<Register2> {
                         if (_formKey.currentState.validate()) {
                           AuthResult res =
                               await _auth.createUserWithEmailAndPassword(
-                                  email: email, password: password);
+                                  email: _emailController.text, password: _passwordController.text);
                           FirebaseUser user = res.user;
                           _firestore.collection("user").add({
                             'fullName': _user.fullName,
