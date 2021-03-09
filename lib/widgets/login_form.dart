@@ -1,3 +1,4 @@
+import 'package:club_app_2021/constants.dart';
 import 'package:club_app_2021/screens/home.dart';
 import 'package:club_app_2021/screens/register1.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
@@ -26,8 +27,8 @@ class _LoginFormState extends State<LoginForm> {
     if (value.isEmpty) {
       return "Please enter Email";
     }
-    if (!EmailValidator.validate(value)) {
-      return "Please enter valid email";
+    if (!EmailValidator.validate(value) && value.contains(knightsEmail)) {
+      return "Please enter valid knights email";
     }
     return null;
   };
