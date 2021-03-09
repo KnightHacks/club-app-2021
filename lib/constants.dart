@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+String knightsEmail = "@knights.ucf.edu";
+
 TextStyle kCardTitleStyle = TextStyle(
   fontSize: 30,
   fontWeight: FontWeight.bold,
