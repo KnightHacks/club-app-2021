@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
        scaffoldBackgroundColor: Color(0xFF1A1843),
        accentColor:  Color(0xFFb7517c),
        toggleableActiveColor: Color(0xFF36328B),
-       cardColor: Colors.indigo
+       //cardColor: Colors.white,
+       //inactive color
+
      ),
       
       initialRoute: Login.id,

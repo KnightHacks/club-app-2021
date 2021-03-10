@@ -133,7 +133,7 @@ class _Register2State extends State<Register2> {
                       child: Text("Go Back"),
                       buttonColor: Colors.amber,
                       onPressed: () =>
-                          Navigator.popAndPushNamed(context, Register1.id),
+                          Navigator.pop(context),
                     ),
                     SizedBox(height: 20),
                   ],
