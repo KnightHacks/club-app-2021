@@ -88,6 +88,7 @@ class _Register1State extends State<Register1> {
                       fullName: _fullNameController.text,
                       street: _streetController.text,
                       apartment: _aptController.text,
+                      city: _cityController.text,
                       state: _stateController.text,
                       zip: _zipController.text,
                       shirtSize: _shirtSizeController.text

@@ -45,6 +45,10 @@ class _Register2State extends State<Register2> {
     return null;
   };
 
+  Object _passwordValidator(String value){
+    return _passwordController.text == value ? null : "Passwords don't match";
+  }
+
   @override
   Widget build(BuildContext context) {
     final inputBorder =
@@ -87,8 +91,7 @@ class _Register2State extends State<Register2> {
                       obscureText: true,
                       textAlign: TextAlign.center,
                       validator: (value) {
-                        print("conform password is: "+value);
-                        return _passwordController.text == value ? null : "Passwords don't match";
+                        return _passwordValidator(value);
                       },
                     ),
                     SizedBox(height: 20),
@@ -108,6 +111,7 @@ class _Register2State extends State<Register2> {
                             'uid': user.uid,
                             'street': _user.street,
                             'apartment': _user.apartment,
+                            'city': _user.city,
                             'state': _user.state,
                             'zip': _user.zip,
                             'shirtSize': _user.shirtSize

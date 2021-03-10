@@ -7,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:club_app_2021/model/KnightHacksUser.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -51,6 +53,29 @@ class _LoginFormState extends State<LoginForm> {
       FirebaseUser user = res.user;
 
       if(user.isEmailVerified){
+
+        String id = user.uid;
+        final _firestore = Firestore.instance;
+
+        _firestore.collection('user').where('uid', isEqualTo: id).getDocuments().then((value){
+          
+          // always returns an array of documents
+          final data = value.documents[0].data;
+          print(data);
+
+          KnightHackUser _khUser = new KnightHackUser(
+            fullName: data["fullname"].toString(),
+            street: data["street"].toString(),
+            apartment: data["apartment"].toString(),
+            city: data["city"].toString(),
+            state: data["state"].toString(),
+            zip: data["zip"].toString(),
+            shirtSize: data["shirtSize"].toString(),
+          );
+
+        });
+
+
         // Move to home page.
         Navigator.popAndPushNamed(context, Home.id);
       }
