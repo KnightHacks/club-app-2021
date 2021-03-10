@@ -24,7 +24,7 @@ class _AccountViewState extends State<AccountView> {
       appBar: AppBar(
         title: Text("Test"),
       ),
-      drawer: AccountDrawer(kh),
+      drawer: AccountDrawer(),
       body: SafeArea(
         child: Column()
       ),

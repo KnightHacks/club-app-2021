@@ -4,12 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AccountDrawer extends StatefulWidget {
-
-  KnightHackUser kh;
-
-  AccountDrawer(this.kh);
-  
+class AccountDrawer extends StatefulWidget {  
   @override
   _AccountDrawerState createState() => _AccountDrawerState();
 }

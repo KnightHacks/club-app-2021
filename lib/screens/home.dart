@@ -8,12 +8,8 @@ import 'package:club_app_2021/widgets/account_drawer.dart';
 
 class Home extends StatefulWidget {
   static const String id = "Home";
-  KnightHackUser kh;
-
-  Home({this.kh});
-
   @override
-  _HomeState createState() => _HomeState(this.kh);
+  _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
@@ -63,10 +59,6 @@ class _HomeState extends State<Home> {
 
   List<KHEvent> events = List<KHEvent>();
 
-  KnightHackUser kh;
-
-  _HomeState(this.kh);
-
   @override
   void initState() {
     super.initState();
@@ -76,9 +68,10 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    print(khUser);
     return Scaffold(
       appBar: titleBar,
-      drawer: AccountDrawer(kh),
+      drawer: AccountDrawer(),
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 25),
