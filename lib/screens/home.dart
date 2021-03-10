@@ -3,6 +3,7 @@ import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/model/Event.dart';
 import 'package:club_app_2021/constants.dart';
+import 'package:club_app_2021/widgets/account_drawer.dart';
 
 class Home extends StatefulWidget {
   static const String id = "Home";
@@ -68,6 +69,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: titleBar,
+      drawer: AccountDrawer(),
       body: SafeArea(
         child: ListView(
           children: events.map((e) => Card(
