@@ -1,3 +1,4 @@
+import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:flutter/material.dart';
 
 String knightsEmail = "@knights.ucf.edu";
@@ -21,3 +22,5 @@ TextStyle kGeneralTextStyle = TextStyle(
 );
 
 Color kIconColor = Colors.white;
+
+KnightHackUser khUser;

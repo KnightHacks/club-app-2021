@@ -1,9 +1,15 @@
+import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/screens/accountedit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AccountDrawer extends StatefulWidget {
+
+  KnightHackUser kh;
+
+  AccountDrawer(this.kh);
+  
   @override
   _AccountDrawerState createState() => _AccountDrawerState();
 }
