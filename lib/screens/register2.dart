@@ -69,6 +69,8 @@ class _Register2State extends State<Register2> {
                       decoration: InputDecoration(
                           labelText: "Knights Email", border: inputBorder),
                       keyboardType: TextInputType.emailAddress,
+                      enableSuggestions: false,
+                      autocorrect: false,
                       textAlign: TextAlign.center,
                       validator: _validateEmail,
                       controller: _emailController
