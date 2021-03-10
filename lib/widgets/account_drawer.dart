@@ -1,3 +1,4 @@
+import 'package:club_app_2021/screens/accountedit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -44,6 +45,11 @@ class _AccountDrawerState extends State<AccountDrawer> {
           ListTile(
             title: Text(_user?.email ?? "email@email.com"),
             leading: Icon(Icons.email),
+          ),
+          FlatButton(
+            onPressed: () => Navigator.pushNamed(context, AccountEdit.id),
+            child: Text("Edit"),
+            color: Colors.amber,
           ),
           FlatButton(
               onPressed: () => logout(context),
