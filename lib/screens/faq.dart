@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:club_app_2021/model/FAQListItem.dart';
@@ -32,9 +33,8 @@ class _FAQState extends State<FAQ> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("FAQ"),
-      ),
+      appBar: titleBar,
+
       body: SafeArea(
         child: FAQList(key: UniqueKey(), items: _items),
       ),

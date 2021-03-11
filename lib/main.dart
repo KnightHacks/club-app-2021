@@ -10,8 +10,6 @@ import 'package:club_app_2021/screens/faq.dart';
 import 'package:club_app_2021/screens/confirm.dart';
 import 'package:club_app_2021/screens/resetpassword.dart';
 
-import 'screens/register2.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -25,9 +23,7 @@ class MyApp extends StatelessWidget {
        scaffoldBackgroundColor: Color(0xFF1A1843),
        accentColor:  Color(0xFFb7517c),
        toggleableActiveColor: Color(0xFF36328B),
-       //cardColor: Colors.white,
-       //inactive color
-
+       cardColor: Colors.indigo
      ),
       initialRoute: Login.id,
       routes: {

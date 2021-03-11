@@ -1,3 +1,7 @@
+import 'package:club_app_2021/constants.dart';
+import 'package:club_app_2021/screens/home.dart';
+import 'package:club_app_2021/screens/register1.dart';
+import 'package:club_app_2021/widgets/rounded_input.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/accountview.dart';
 import 'package:club_app_2021/screens/resetpassword.dart';
+
 
 class LoginForm extends StatefulWidget {
   @override
@@ -25,8 +30,8 @@ class _LoginFormState extends State<LoginForm> {
     if (value.isEmpty) {
       return "Please enter Email";
     }
-    if (!EmailValidator.validate(value)) {
-      return "Please enter valid email";
+    if (!EmailValidator.validate(value) && value.contains(knightsEmail)) {
+      return "Please enter valid knights email";
     }
     return null;
   };
@@ -50,7 +55,7 @@ class _LoginFormState extends State<LoginForm> {
 
       if(user.isEmailVerified){
         // Move to home page.
-        Navigator.popAndPushNamed(context, AccountView.id);
+        Navigator.popAndPushNamed(context, Home.id);
       }
       else{
         showDialog(
@@ -92,47 +97,48 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    final inputBorder = OutlineInputBorder(
-        borderRadius: BorderRadius.circular(30)
-    );
-
     return Form(
       key: _formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          TextFormField(
-            validator: _validateEmail,
-            controller: _emailController,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              labelText: "Email",
-              border: inputBorder
-            ),
-          ),
-          SizedBox(height: 20),
-          TextFormField(
-            validator: _validatePassword,
-            controller: _passwordController,
-            obscureText: true,
-            decoration: InputDecoration(
-              labelText: "Password",
-              border: inputBorder
-            ),
-          ),
-          SizedBox(height: 20),
-          RoundedButton(
-            onPressed: () => _login(context),
-            child: Text("Login"),
-          ),
-          SizedBox(height: 20),
-          RoundedButton(
-            onPressed: () =>Navigator.popAndPushNamed(context, ResetPassword.id),
-            child: Text("Forget your Password?"),
-          )
-        ],
-      ),
+      child: Center(
+        child: Container(
+          height: 400,
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           crossAxisAlignment: CrossAxisAlignment.center,
+           children: [
+             RoundedTextInput(
+               validator: _validateEmail,
+               controller: _emailController,
+               keyboardType: TextInputType.emailAddress,
+               labelText: "Email",
+               autocorrect: false,
+             ),
+             SizedBox(height: 20),
+             RoundedTextInput(
+               validator: _validatePassword,
+               controller: _passwordController,
+               labelText: "Password",
+               obscureText: true,
+             ),
+             SizedBox(height: 20),
+             RoundedButton(
+               onPressed: () => _login(context),
+               child: Text("Login"),
+             ),
+             SizedBox(height: 20),
+              RoundedButton(
+                onPressed: () =>Navigator.popAndPushNamed(context, ResetPassword.id),
+                child: Text("Forget your Password?"),
+              ),
+             SizedBox(height: 20),
+             RoundedButton(
+                 child: Text("Register"),
+                 onPressed: () => Navigator.pushNamed(context, Register1.id)
+             )
+           ],
+         ),
+        ),
+      )
     );
   }
 }
