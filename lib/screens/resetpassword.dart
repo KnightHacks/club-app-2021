@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:club_app_2021/screens/error.dart';
+import 'package:club_app_2021/screens/confirm.dart';
 
 class ResetPassword extends StatefulWidget {
   static const id = 'ResetPassword';
@@ -30,6 +32,7 @@ class _ResetPassword extends State<ResetPassword> {
       children: [
         TextFormField(
          decoration: InputDecoration(
+           //TextField to enter the email
               labelText:"Enter Your Email",
               border:inputBorder,
             ),
@@ -41,10 +44,18 @@ class _ResetPassword extends State<ResetPassword> {
         ),
           SizedBox(height: 20),
           RoundedButton(
+            //This button is to send the reset password email
             child: Text('Send Request'),
-            onPressed: () {
-              _auth.sendPasswordResetEmail(email: email);
-              Navigator.popAndPushNamed(context, Login.id);
+            onPressed: () async {
+              try{
+                //When button is pressed this sends password reset email
+                await _auth.sendPasswordResetEmail(email: email);
+                Navigator.popAndPushNamed(context, Confirm.id);
+                }
+              catch(e){
+                //if the email does not exist or there is some error
+                Navigator.pushNamed(context, Error.id);
+              }
             },
           ),
 
