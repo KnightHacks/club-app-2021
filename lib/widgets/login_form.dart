@@ -7,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
+import 'package:club_app_2021/screens/resetpassword.dart';
+
 
 class LoginForm extends StatefulWidget {
   @override
@@ -122,6 +124,11 @@ class _LoginFormState extends State<LoginForm> {
                onPressed: () => _login(context),
                child: Text("Login"),
              ),
+             SizedBox(height: 20),
+              RoundedButton(
+                onPressed: () =>Navigator.popAndPushNamed(context, ResetPassword.id),
+                child: Text("Forget your Password?"),
+              ),
              SizedBox(height: 20),
              RoundedButton(
                  child: Text("Register"),

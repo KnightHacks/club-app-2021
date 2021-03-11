@@ -8,6 +8,7 @@ import 'package:club_app_2021/screens/accountedit.dart';
 import 'package:club_app_2021/screens/error.dart';
 import 'package:club_app_2021/screens/faq.dart';
 import 'package:club_app_2021/screens/confirm.dart';
+import 'package:club_app_2021/screens/resetpassword.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,7 +25,6 @@ class MyApp extends StatelessWidget {
        toggleableActiveColor: Color(0xFF36328B),
        cardColor: Colors.indigo
      ),
-      
       initialRoute: Login.id,
       routes: {
         Login.id : (context) => Login(),
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
         FAQ.id : (context) => FAQ(),
         Error.id : (context) => Error(),
         Confirm.id: (context) => Confirm(),
+        ResetPassword.id: (context) => ResetPassword(),
       },
     );
   }
