@@ -8,6 +8,7 @@ import 'package:club_app_2021/screens/accountedit.dart';
 import 'package:club_app_2021/screens/error.dart';
 import 'package:club_app_2021/screens/faq.dart';
 import 'package:club_app_2021/screens/confirm.dart';
+import 'package:club_app_2021/screens/resetpassword.dart';
 
 import 'screens/register2.dart';
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
        //inactive color
 
      ),
-      initialRoute: Register2.id,
+      initialRoute: Login.id,
       routes: {
         Login.id : (context) => Login(),
         Register1.id : (context) => Register1(),
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         FAQ.id : (context) => FAQ(),
         Error.id : (context) => Error(),
         Confirm.id: (context) => Confirm(),
+        ResetPassword.id: (context) => ResetPassword(),
       },
     );
   }
