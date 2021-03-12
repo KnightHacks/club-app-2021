@@ -1,8 +1,5 @@
-import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
 import 'package:club_app_2021/widgets/title_bar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AccountEdit extends StatefulWidget {
