@@ -5,9 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:club_app_2021/model/Event.dart';
 import 'package:club_app_2021/constants.dart';
 import 'package:club_app_2021/widgets/account_drawer.dart';
+import 'package:club_app_2021/widgets/account_wrapper.dart';
 
 class Home extends StatefulWidget {
   static const String id = "Home";
+  final KnightHackUser khUser;
+
+  Home({this.khUser});
+
   @override
   _HomeState createState() => _HomeState();
 }
@@ -64,47 +69,50 @@ class _HomeState extends State<Home> {
     super.initState();
     events = allEvents.map((e) => new KHEvent.from(e)).toList();
     print(events);
+    //print(widget.khUser);
   }
 
   @override
   Widget build(BuildContext context) {
-    print(khUser);
-    return Scaffold(
-      appBar: titleBar,
-      drawer: AccountDrawer(),
-      body: SafeArea(
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 25),
-          child: ListView(
-            children: events.map((e) => Card(
-              child: Column(
-                children: <Widget>[
-                  Text(
-                      e.title,
-                      style: kCardTitleStyle
-                  ),
-                  Text(
-                    e.description,
-                    style: kCardDescriptionStyle
-                  ),
-                  FlatButton(
-                    color: Theme.of(context).accentColor,
-                      onPressed: () {
-                        final Event event = Event(
-                          title: e.title,
-                          description: e.description,
-                          startDate: e.dateTime,
-                          endDate: e.dateTime,
-                        );
-                        Add2Calendar.addEvent2Cal(event);
-                      },
-                      child: Text(
-                    'Add to Calendar',
-                    style: kAddToCalStyle
-                  ))
-                ],
-              ),
-            )).toList(),
+    return AccountWrapper(
+        KhUser: widget.khUser,
+          child: Scaffold(
+        appBar: titleBar,
+        drawer: AccountDrawer(),
+        body: SafeArea(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 25),
+            child: ListView(
+              children: events.map((e) => Card(
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                        e.title,
+                        style: kCardTitleStyle
+                    ),
+                    Text(
+                      e.description,
+                      style: kCardDescriptionStyle
+                    ),
+                    FlatButton(
+                      color: Theme.of(context).accentColor,
+                        onPressed: () {
+                          final Event event = Event(
+                            title: e.title,
+                            description: e.description,
+                            startDate: e.dateTime,
+                            endDate: e.dateTime,
+                          );
+                          Add2Calendar.addEvent2Cal(event);
+                        },
+                        child: Text(
+                      'Add to Calendar',
+                      style: kAddToCalStyle
+                    ))
+                  ],
+                ),
+              )).toList(),
+            ),
           ),
         ),
       ),

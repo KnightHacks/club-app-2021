@@ -22,5 +22,3 @@ TextStyle kGeneralTextStyle = TextStyle(
 );
 
 Color kIconColor = Colors.white;
-
-KnightHackUser khUser;

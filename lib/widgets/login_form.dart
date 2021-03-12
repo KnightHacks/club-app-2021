@@ -56,15 +56,15 @@ class _LoginFormState extends State<LoginForm> {
 
         String id = user.uid;
         final _firestore = Firestore.instance;
-        //KnightHackUser _khUser;
+        KnightHackUser khUser;
 
-        _firestore.collection('user').where('uid', isEqualTo: id).getDocuments().then((value){
+        await _firestore.collection('user').where('uid', isEqualTo: id).getDocuments().then((value){
           
           // always returns an array of documents
           final data = value.documents[0].data;
-          print(data);
+          //print(data);
 
-          khUser = new KnightHackUser(
+          KnightHackUser _khUser = new KnightHackUser(
             fullName: data["fullname"].toString(),
             street: data["street"].toString(),
             apartment: data["apartment"].toString(),
@@ -73,12 +73,11 @@ class _LoginFormState extends State<LoginForm> {
             zip: data["zip"].toString(),
             shirtSize: data["shirtSize"].toString(),
           );
-
+          print(_khUser);
+          khUser = _khUser;
         });
-
-
         // Move to home page.
-        Navigator.popAndPushNamed(context, Home.id);
+        Navigator.popAndPushNamed(context, Home.id, arguments: khUser);
       }
       else{
         showDialog(
