@@ -1,4 +1,3 @@
-import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/screens/accountedit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
