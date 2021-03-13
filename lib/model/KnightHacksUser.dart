@@ -1,4 +1,5 @@
 class KnightHackUser {
+  final String uid;
   final String fullName;
   final String street;
   final String apartment;
@@ -8,6 +9,7 @@ class KnightHackUser {
   final String shirtSize;
 
   KnightHackUser({
+    this.uid,
     this.fullName,
     this.street,
     this.apartment,

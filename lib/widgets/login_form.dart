@@ -67,6 +67,7 @@ class _LoginFormState extends State<LoginForm> {
         });
 
         khUser = new KnightHackUser(
+          uid: data["uid"].toString(),
           fullName: data["fullName"].toString(),
           street: data["street"].toString(),
           apartment: data["apartment"].toString(),

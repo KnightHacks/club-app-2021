@@ -75,9 +75,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
 
     // Getting the arguments passed from HomeArgument.
-
     final HomeArgument args = ModalRoute.of(context).settings.arguments;
-
+    
     return AccountWrapper(
         // passing knightHackUser as the inherited widget
         khUser: args.knightHackUser,
