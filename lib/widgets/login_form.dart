@@ -62,6 +62,7 @@ class _LoginFormState extends State<LoginForm> {
             .getDocuments()
             .then((value) {
           // always returns an array of documents
+          // casting it as a Map
           data = Map.from(value.documents[0].data);
         });
 
