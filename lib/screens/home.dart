@@ -1,5 +1,6 @@
 import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
+import 'package:club_app_2021/model/HomeArgument.dart';
 import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/model/Event.dart';
@@ -9,9 +10,6 @@ import 'package:club_app_2021/widgets/account_wrapper.dart';
 
 class Home extends StatefulWidget {
   static const String id = "Home";
-  final KnightHackUser khUser;
-
-  Home({this.khUser});
 
   @override
   _HomeState createState() => _HomeState();
@@ -63,19 +61,26 @@ class _HomeState extends State<Home> {
   ];
 
   List<KHEvent> events = List<KHEvent>();
+  _HomeState({this.khUser});
+  KnightHackUser khUser;
 
   @override
   void initState() {
     super.initState();
     events = allEvents.map((e) => new KHEvent.from(e)).toList();
     print(events);
-    //print(widget.khUser);
   }
 
   @override
   Widget build(BuildContext context) {
+
+    // Getting the arguments passed from HomeArgument.
+
+    final HomeArgument args = ModalRoute.of(context).settings.arguments;
+
     return AccountWrapper(
-        KhUser: widget.khUser,
+        // passing knightHackUser as the inherited widget
+        khUser: args.knightHackUser,
           child: Scaffold(
         appBar: titleBar,
         drawer: AccountDrawer(),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class AccountView extends StatefulWidget {
   static const String id = "AccountView";
-  KnightHackUser kh;
+  final KnightHackUser kh;
 
   AccountView({this.kh});
 

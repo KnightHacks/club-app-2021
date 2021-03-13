@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 class AccountWrapper extends InheritedWidget{
   
-  AccountWrapper({Key key, @required this.KhUser, @required Widget child}) : super(key: key, child: child);
+  AccountWrapper({Key key, @required this.khUser, @required Widget child}) : super(key: key, child: child);
 
-  final KnightHackUser KhUser;
+  final KnightHackUser khUser;
 
   static AccountWrapper of (BuildContext context){
 
