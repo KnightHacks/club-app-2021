@@ -1,5 +1,6 @@
 class KnightHackUser {
   final String uid;
+  final String docId;
   final String fullName;
   final String street;
   final String apartment;
@@ -10,6 +11,7 @@ class KnightHackUser {
 
   KnightHackUser({
     this.uid,
+    this.docId,
     this.fullName,
     this.street,
     this.apartment,
