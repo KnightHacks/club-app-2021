@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
+import 'package:club_app_2021/screens/confirm.dart';
 import 'package:club_app_2021/screens/error.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
 import 'package:club_app_2021/widgets/title_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/model/Prop.dart';
 
@@ -60,6 +62,17 @@ class _AccountEditState extends State<AccountEdit> {
         })
         .then((value) => Navigator.pop(context))
         .catchError((error) => print(error.toString()));
+  }
+
+  void _resetPassword(BuildContext context) async{
+    
+    print('Implementing soon.');
+
+    // FirebaseAuth _auth = FirebaseAuth.instance;
+    
+    // _auth.sendPasswordResetEmail(email: null)
+    // .then((value) => Navigator.pushNamed(context, Confirm.id))
+    // .catchError((e) => Navigator.pushNamed(context, Error.id));
   }
 
   @override
@@ -121,6 +134,12 @@ class _AccountEditState extends State<AccountEdit> {
                   buttonColor: Colors.amber,
                   child: Text("Submit Changes"),
                   onPressed: () => _submitChanges(context),
+                ),
+                SizedBox(height: 10),
+                RoundedButton(
+                  buttonColor: Color(0xFFb7517c),
+                  child: Text("Reset Password"),
+                  onPressed: () => _resetPassword(context),
                 ),
               ],
             ),
