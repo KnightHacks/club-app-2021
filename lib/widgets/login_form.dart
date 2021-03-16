@@ -1,5 +1,4 @@
 import 'package:club_app_2021/constants.dart';
-import 'package:club_app_2021/model/HomeArgument.dart';
 import 'package:club_app_2021/screens/home.dart';
 import 'package:club_app_2021/screens/register1.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
@@ -8,8 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:club_app_2021/model/KnightHacksUser.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -42,7 +39,6 @@ class _LoginFormState extends State<LoginForm> {
 
     final String email = _emailController.text;
     final String password = _passwordController.text;
-    Map <String, dynamic> data;
 
     try {
       // Try to sign user in.
@@ -52,35 +48,7 @@ class _LoginFormState extends State<LoginForm> {
       FirebaseUser user = res.user;
 
       if (user.isEmailVerified) {
-        String id = user.uid;
-        final _firestore = Firestore.instance;
-        KnightHackUser khUser;
-
-        await _firestore
-            .collection('user')
-            .where('uid', isEqualTo: id)
-            .getDocuments()
-            .then((value) {
-          // always returns an array of documents
-          // casting it as a Map
-          data = Map.from(value.documents[0].data);
-        });
-
-        khUser = new KnightHackUser(
-          uid: data["uid"].toString(),
-          fullName: data["fullName"].toString(),
-          street: data["street"].toString(),
-          apartment: data["apartment"].toString(),
-          city: data["city"].toString(),
-          state: data["state"].toString(),
-          zip: data["zip"].toString(),
-          shirtSize: data["shirtSize"].toString(),
-        );
-
-        // Move to home page.
-        // Passing the khUser object into the HomeArgument wrapper object.
-        // arguments property expects an object.
-        Navigator.popAndPushNamed(context, Home.id, arguments: HomeArgument(khUser));
+        Navigator.popAndPushNamed(context, Home.id);
       } else {
         showDialog(
           context: context,
