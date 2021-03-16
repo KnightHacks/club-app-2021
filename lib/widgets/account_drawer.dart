@@ -38,6 +38,7 @@ class _AccountDrawerState extends State<AccountDrawer> {
         khUser = new KnightHackUser(
           uid: data["uid"].toString(),
           docId: value.documents[0].documentID,
+          email: _user.email,
           fullName: data["fullName"].toString(),
           street: data["street"].toString(),
           apartment: data["apartment"].toString(),

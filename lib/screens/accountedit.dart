@@ -66,13 +66,11 @@ class _AccountEditState extends State<AccountEdit> {
 
   void _resetPassword(BuildContext context) async{
     
-    print('Implementing soon.');
-
-    // FirebaseAuth _auth = FirebaseAuth.instance;
+    FirebaseAuth _auth = FirebaseAuth.instance;
     
-    // _auth.sendPasswordResetEmail(email: null)
-    // .then((value) => Navigator.pushNamed(context, Confirm.id))
-    // .catchError((e) => Navigator.pushNamed(context, Error.id));
+    _auth.sendPasswordResetEmail(email: khUser.email)
+    .then((value) => Navigator.pushNamed(context, Confirm.id))
+    .catchError((e) => Navigator.pushNamed(context, Error.id));
   }
 
   @override
