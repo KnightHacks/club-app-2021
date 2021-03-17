@@ -7,6 +7,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
+import 'package:club_app_2021/screens/resetpassword.dart';
+
 
 class LoginForm extends StatefulWidget {
   @override
@@ -92,40 +94,47 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-        key: _formKey,
-        child: Center(
-          child: Container(
-            height: 400,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                RoundedTextInput(
-                  validator: _validateEmail,
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  labelText: "Email",
-                  autocorrect: false,
-                ),
-                SizedBox(height: 20),
-                RoundedTextInput(
-                  validator: _validatePassword,
-                  controller: _passwordController,
-                  labelText: "Password",
-                  obscureText: true,
-                ),
-                SizedBox(height: 20),
-                RoundedButton(
-                  onPressed: () => _login(context),
-                  child: Text("Login"),
-                ),
-                SizedBox(height: 20),
-                RoundedButton(
-                    child: Text("Register"),
-                    onPressed: () => Navigator.pushNamed(context, Register1.id))
-              ],
-            ),
-          ),
-        ));
+      key: _formKey,
+      child: Center(
+        child: Container(
+          height: 400,
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.center,
+           crossAxisAlignment: CrossAxisAlignment.center,
+           children: [
+             RoundedTextInput(
+               validator: _validateEmail,
+               controller: _emailController,
+               keyboardType: TextInputType.emailAddress,
+               labelText: "Email",
+               autocorrect: false,
+             ),
+             SizedBox(height: 20),
+             RoundedTextInput(
+               validator: _validatePassword,
+               controller: _passwordController,
+               labelText: "Password",
+               obscureText: true,
+             ),
+             SizedBox(height: 20),
+             RoundedButton(
+               onPressed: () => _login(context),
+               child: Text("Login"),
+             ),
+             SizedBox(height: 20),
+              RoundedButton(
+                onPressed: () =>Navigator.popAndPushNamed(context, ResetPassword.id),
+                child: Text("Forget your Password?"),
+              ),
+             SizedBox(height: 20),
+             RoundedButton(
+                 child: Text("Register"),
+                 onPressed: () => Navigator.pushNamed(context, Register1.id)
+             )
+           ],
+         ),
+        ),
+      )
+    );
   }
 }

@@ -21,7 +21,7 @@ class _ConfirmState extends State<Confirm> {
           Expanded(
             child: Center(
               child: Text(
-                "A verification email has been sent!",
+                "A  email has been sent!",
                 style: TextStyle(
                   fontSize: 32.0,
                 ),
