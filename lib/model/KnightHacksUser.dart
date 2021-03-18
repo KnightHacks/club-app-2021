@@ -1,4 +1,6 @@
-class KnightHackUser {
+import 'package:flutter/material.dart';
+
+class KnightHackUser extends InheritedWidget {
   final String fullName;
   final String street;
   final String apartment;
@@ -16,4 +18,16 @@ class KnightHackUser {
     this.zip,
     this.shirtSize
   });
+
+  static KnightHackUser of(BuildContext context) {
+    final KnightHackUser result = context
+        .dependOnInheritedWidgetOfExactType<KnightHackUser>();
+    assert(result != null, "Could not fetch user from context!");
+    return result;
+  }
+
+  @override
+  bool updateShouldNotify(KnightHackUser oldUser) {
+    return fullName != oldUser.fullName;
+  }
 }
