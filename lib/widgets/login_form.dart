@@ -34,9 +34,9 @@ class _LoginFormState extends State<LoginForm> {
     return null;
   };
 
-  void _login(BuildContext context) async {
+  Future<void> _login(BuildContext context) async {
     if (!_formKey.currentState.validate()) {
-      return null;
+      throw new Error();
     }
 
     final String email = _emailController.text;
@@ -66,21 +66,8 @@ class _LoginFormState extends State<LoginForm> {
           },
         );
       }
-    } catch (e) {
-      // Show error dialog
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text("Could not login"),
-            actions: <Widget>[
-              new FlatButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: Text("Close"))
-            ],
-          );
-        },
-      );
+    } catch(e) {
+      throw e;
     }
   }
 
@@ -89,6 +76,32 @@ class _LoginFormState extends State<LoginForm> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  Future<void> showLoadingDialogue(context) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Color(0xFF36328B),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [CircularProgressIndicator(
+              value: null,
+            ), Text('Loading')
+            ],
+          ),
+          actions: [
+            TextButton(
+              child: Text("Cancel"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        );
+      }
+    );
   }
 
   @override
@@ -118,7 +131,29 @@ class _LoginFormState extends State<LoginForm> {
              ),
              SizedBox(height: 20),
              RoundedButton(
-               onPressed: () => _login(context),
+               onPressed: () {
+                 _login(context).then((value) {
+                   Navigator.of(context, rootNavigator: true).pop('dialog');
+                   Navigator.popAndPushNamed(context, Home.id);
+                 })
+                 .catchError((err) {
+                   Navigator.of(context, rootNavigator: true).pop('dialog');
+                   // Show error dialog
+                   showDialog(
+                     context: context,
+                     builder: (BuildContext context) {
+                       return AlertDialog(
+                         title: Text("Could not login"),
+                         actions: <Widget>[
+                           new FlatButton(onPressed: () => Navigator.of(context).pop(),
+                               child: Text("Close"))
+                         ],
+                       );
+                     },
+                   );
+                 });
+                 showLoadingDialogue(context);
+               },
                child: Text("Login"),
              ),
              SizedBox(height: 20),
