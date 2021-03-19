@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class KnightHackUser extends InheritedWidget {
+
+  final String uid;
+  final String docId;
+  final String email;
   final String fullName;
   final String street;
   final String apartment;
@@ -10,6 +14,9 @@ class KnightHackUser extends InheritedWidget {
   final String shirtSize;
 
   KnightHackUser({
+    this.uid,
+    this.docId,
+    this.email,
     this.fullName,
     this.street,
     this.apartment,
