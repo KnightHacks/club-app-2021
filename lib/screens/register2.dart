@@ -3,7 +3,6 @@ import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
-import 'package:club_app_2021/screens/register1.dart';
 import 'package:club_app_2021/screens/confirm.dart';
 import '../widgets/title_bar.dart';
 import 'package:club_app_2021/constants.dart';
@@ -45,6 +44,10 @@ class _Register2State extends State<Register2> {
     return null;
   };
 
+  Object _passwordValidator(String value){
+    return _passwordController.text == value ? null : "Passwords don't match";
+  }
+
   @override
   Widget build(BuildContext context) {
     final inputBorder =
@@ -65,6 +68,8 @@ class _Register2State extends State<Register2> {
                       decoration: InputDecoration(
                           labelText: "Knights Email", border: inputBorder),
                       keyboardType: TextInputType.emailAddress,
+                      enableSuggestions: false,
+                      autocorrect: false,
                       textAlign: TextAlign.center,
                       validator: _validateEmail,
                       controller: _emailController
@@ -87,8 +92,7 @@ class _Register2State extends State<Register2> {
                       obscureText: true,
                       textAlign: TextAlign.center,
                       validator: (value) {
-                        print("conform password is: "+value);
-                        return _passwordController.text == value ? null : "Passwords don't match";
+                        return _passwordValidator(value);
                       },
                     ),
                     SizedBox(height: 20),
@@ -108,6 +112,7 @@ class _Register2State extends State<Register2> {
                             'uid': user.uid,
                             'street': _user.street,
                             'apartment': _user.apartment,
+                            'city': _user.city,
                             'state': _user.state,
                             'zip': _user.zip,
                             'shirtSize': _user.shirtSize
@@ -133,7 +138,7 @@ class _Register2State extends State<Register2> {
                       child: Text("Go Back"),
                       buttonColor: Colors.amber,
                       onPressed: () =>
-                          Navigator.popAndPushNamed(context, Register1.id),
+                          Navigator.pop(context),
                     ),
                     SizedBox(height: 20),
                   ],

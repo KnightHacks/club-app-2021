@@ -16,7 +16,6 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -35,9 +34,7 @@ class _LoginFormState extends State<LoginForm> {
     return null;
   };
 
-
   Future<void> _login(BuildContext context) async {
-
     if (!_formKey.currentState.validate()) {
       throw new Error();
     }
@@ -47,23 +44,22 @@ class _LoginFormState extends State<LoginForm> {
 
     try {
       // Try to sign user in.
-      AuthResult res = await FirebaseAuth.instance.signInWithEmailAndPassword(email: email,
-          password: password);
-      
+      AuthResult res = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+
       FirebaseUser user = res.user;
 
-      if(user.isEmailVerified){
-        // Move to home page.
+      if (user.isEmailVerified) {
         Navigator.popAndPushNamed(context, Home.id);
-      }
-      else{
+      } else {
         showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text("Please check email for verification link"),
               actions: <Widget>[
-                new FlatButton(onPressed: () => Navigator.of(context).pop(),
+                new FlatButton(
+                    onPressed: () => Navigator.of(context).pop(),
                     child: Text("Close"))
               ],
             );
