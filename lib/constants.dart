@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 String knightsEmail = "@knights.ucf.edu";
 
 TextStyle kCardTitleStyle = TextStyle(
-  fontSize: 30,
+  fontSize: 24,
   fontWeight: FontWeight.bold,
   color: Colors.white
 );
 
 TextStyle kCardDescriptionStyle = TextStyle(
-  color: Colors.white
+  color: Colors.white,
+  fontSize: 18,
 );
 
 TextStyle kAddToCalStyle = TextStyle(

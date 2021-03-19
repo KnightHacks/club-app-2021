@@ -4,6 +4,7 @@ class KHEvent {
   String location;
   DateTime dateTime;
   String presenter;
+  bool isExpanded = false;
 
   KHEvent({
     this.title,
