@@ -1,3 +1,8 @@
+/// Entry point to the club app.
+/// 
+/// This file contains all of the routes for the application and the color
+/// palette used throughout the app. This is the root of the widget tree.
+
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/screens/login.dart';
 import 'package:club_app_2021/screens/register1.dart';
@@ -17,6 +22,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    /// Creating a copy of the default dark theme.
+    /// 
+    /// Changing primary, scaffold background, accent and toggleable active
+    /// color to conform to the color palette used in the KnightHacks club site.
+    /// Changes may be made in the future so that the app can conform better.
     return MaterialApp(
      theme: ThemeData.dark().copyWith(
        primaryColor: Color(0xFF1A1843),
@@ -27,6 +37,11 @@ class MyApp extends StatelessWidget {
        //inactive color
 
      ),
+      /// Routes.
+      /// 
+      /// Calling each page route with the class's static id. This removes
+      /// confusion on how to name routes. Use the props widget to pass
+      /// parameters to other pages when pushing.
       initialRoute: Login.id,
       routes: {
         Login.id : (context) => Login(),
