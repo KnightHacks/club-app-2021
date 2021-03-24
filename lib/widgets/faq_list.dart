@@ -1,3 +1,8 @@
+/// FAQ List widget.
+/// 
+/// This widget contains a list of expandable FAQ panels. The panels contain a
+/// question and an answer.
+
 import 'package:club_app_2021/model/FAQListItem.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/constants.dart';
@@ -22,6 +27,7 @@ class _FAQListState extends State<FAQList> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        /// Wraps the expansion panels in a list view
         child: ListView(
           children: [
             ExpansionPanelList(

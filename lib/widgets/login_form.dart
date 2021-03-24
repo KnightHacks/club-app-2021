@@ -1,3 +1,8 @@
+/// This widget handles login.
+/// 
+/// This widget handles text input, validation, and navigation to the register
+/// page. It utilizes custom text input and button widgets.
+
 import 'package:club_app_2021/constants.dart';
 import 'package:club_app_2021/screens/home.dart';
 import 'package:club_app_2021/screens/register1.dart';
@@ -20,10 +25,13 @@ class _LoginFormState extends State<LoginForm> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  /// This method checks if the password field is empty.
   final String Function(String) _validatePassword = (String value) {
     return value.isEmpty ? "Please enter password" : null;
   };
 
+  /// This method checks if the entered email is empty or if it is not a
+  /// knights email.
   final String Function(String) _validateEmail = (String value) {
     if (value.isEmpty) {
       return "Please enter Email";
@@ -34,6 +42,12 @@ class _LoginFormState extends State<LoginForm> {
     return null;
   };
 
+  /// This method logs the user in.
+  /// 
+  /// It attempts to log the user in with the entered email and password. 
+  /// If the login succeeds, it checks if the user has verified their email.
+  /// If they have not, then an alert is rendered. If they have, then it
+  /// navigates to the home page. If login fails
   Future<void> _login(BuildContext context) async {
     if (!_formKey.currentState.validate()) {
       throw new Error();
@@ -52,6 +66,7 @@ class _LoginFormState extends State<LoginForm> {
       if (user.isEmailVerified) {
         Navigator.popAndPushNamed(context, Home.id);
       } else {
+        /// Renders a popup
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -78,6 +93,7 @@ class _LoginFormState extends State<LoginForm> {
     super.dispose();
   }
 
+  /// Renders a loading dialogue when the login button is pressed.
   Future<void> showLoadingDialogue(context) {
     return showDialog(
       context: context,
@@ -104,6 +120,9 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
+  /// Renders a form widget that contains the inputs for email and password. 
+  /// 
+  /// The login button calls _login and the register button navigates to the register1 page.
   @override
   Widget build(BuildContext context) {
     return Form(

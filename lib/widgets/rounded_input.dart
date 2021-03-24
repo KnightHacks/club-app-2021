@@ -1,3 +1,8 @@
+/// Custom text input widget.
+/// 
+/// A validator, controller, and label text are optional parameters for this
+/// widget.
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

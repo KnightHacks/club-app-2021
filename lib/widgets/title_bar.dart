@@ -1,9 +1,13 @@
+/// Custom app bar widget.
+///
+/// Contains a centered logo image.
+
 import 'package:flutter/material.dart';
 
 AppBar titleBar = AppBar(
-        centerTitle: true,
-        title: Image.asset(
-          "assets/knightHacksLogoGold.png",
-          width: 150,
-        ),
-      );
+  centerTitle: true,
+  title: Image.asset(
+    "assets/knightHacksLogoGold.png",
+    width: 150,
+  ),
+);

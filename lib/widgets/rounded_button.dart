@@ -1,3 +1,7 @@
+/// Custom rounded button widget
+/// 
+/// A child widget and a onPressed callback are required to render this widget.
+
 import 'package:flutter/material.dart';
 
 class RoundedButton extends StatelessWidget {
