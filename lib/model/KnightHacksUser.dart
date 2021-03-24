@@ -1,3 +1,10 @@
+/// Wrapper class that stores the logged in user's information. 
+/// 
+/// Extends inherited widget so that it is accessible from anywhere in the 
+/// widget tree. Stores the uid of the user in firebase auth, the id of their 
+/// document in firestore, email, full name, street address, apartment, city, 
+/// state, zipcode, and shirt size.
+
 import 'package:flutter/material.dart';
 
 class KnightHackUser extends InheritedWidget {

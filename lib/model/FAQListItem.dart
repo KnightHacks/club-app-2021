@@ -1,3 +1,8 @@
+/// Wrapper class for FAQ items.
+/// 
+/// Used when retrieving the FAQ from http request. The returned json is parsed
+/// and the questions and answers are stored in objects of this class.
+
 class FAQListItem {
   String question;
   String answer;
