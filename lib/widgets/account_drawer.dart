@@ -1,3 +1,11 @@
+import 'package:club_app_2021/model/Prop.dart';
+import 'package:club_app_2021/screens/accountedit.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:club_app_2021/model/KnightHacksUser.dart';
+
 /// Custom account drawer widget
 /// 
 /// The account drawer widget will contain the signed in user's information. 
@@ -8,15 +16,6 @@
 /// The object is passed to the edit account page. At the moment, only the 
 /// user's email is displayed but an issue has been made for displaying more 
 /// user information.
-
-import 'package:club_app_2021/model/Prop.dart';
-import 'package:club_app_2021/screens/accountedit.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:club_app_2021/model/KnightHacksUser.dart';
-
 class AccountDrawer extends StatefulWidget {  
   @override
   _AccountDrawerState createState() => _AccountDrawerState();
@@ -40,22 +39,22 @@ class _AccountDrawerState extends State<AccountDrawer> {
   /// as a parameter to the edit page.
   void _goToEdit(BuildContext context) async {
     try{
-      /// Getting the signed in user and firestore instance
+      // Getting the signed in user and firestore instance
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
       String id = user.uid;
       final _firestore = Firestore.instance;
 
-      /// Querying firestore for a document containing the current user's info.
+      // Querying firestore for a document containing the current user's info.
       await _firestore
           .collection('user')
           .where('uid', isEqualTo: id)
           .getDocuments()
           .then((value) {
 
-        /// always returns an array of documents
+        // always returns an array of documents
         data = value.documents[0].data;
 
-        /// Instantiating a KnightHackUser with the retrieved values.
+        // Instantiating a KnightHackUser with the retrieved values.
         khUser = new KnightHackUser(
           uid: data["uid"].toString(),
           docId: value.documents[0].documentID,
@@ -70,7 +69,7 @@ class _AccountDrawerState extends State<AccountDrawer> {
         );
       });
 
-      /// Navigating to the edit page and passing the user object as a parameter
+      // Navigating to the edit page and passing the user object as a parameter
       Navigator.pushNamed(context, AccountEdit.id, arguments: Prop(khUser));
     } catch(e){
 

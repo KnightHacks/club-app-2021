@@ -6,27 +6,28 @@ import 'package:flutter/material.dart';
 /// knights email.
 String knightsEmail = "@knights.ucf.edu";
 
-/// Constant styling widgets
-/// 
-/// These are used throughout the app to stylize cards, buttons, and text
-/// so that it conforms to the club site.
+/// Card title styling.
 TextStyle kCardTitleStyle = TextStyle(
   fontSize: 24,
   fontWeight: FontWeight.bold,
   color: Colors.white
 );
 
+/// Card description styling.
 TextStyle kCardDescriptionStyle = TextStyle(
   color: Colors.white,
   fontSize: 18,
 );
 
+/// Styling for the add to calendar button.
 TextStyle kAddToCalStyle = TextStyle(
   color: Colors.white
 );
 
+/// General text style.
 TextStyle kGeneralTextStyle = TextStyle(
   color: Colors.white
 );
 
+/// Icon color.
 Color kIconColor = Colors.white;

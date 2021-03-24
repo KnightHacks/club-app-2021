@@ -4,7 +4,6 @@ import 'package:club_app_2021/model/KnightHacksUser.dart';
 
 /// To access these attributes do:
 /// final Prop prop = ModalRoute.of(context).settings.arguments;
-
 class Prop{
   final KnightHackUser knightHackUser;
 

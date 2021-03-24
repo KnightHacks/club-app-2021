@@ -1,3 +1,10 @@
+import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:club_app_2021/widgets/title_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:club_app_2021/model/Event.dart';
+import 'package:club_app_2021/constants.dart';
+import 'package:club_app_2021/widgets/account_drawer.dart';
+
 /// Home page.
 /// 
 /// The user is navigated to this page after logging in. This page also displays
@@ -7,14 +14,6 @@
 /// Changes to be made:
 ///  * Add tab switcher to include the FAQ page.
 ///  * Hook up notion api to replace hard coded events.
-
-import 'package:add_2_calendar/add_2_calendar.dart';
-import 'package:club_app_2021/widgets/title_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:club_app_2021/model/Event.dart';
-import 'package:club_app_2021/constants.dart';
-import 'package:club_app_2021/widgets/account_drawer.dart';
-
 class Home extends StatefulWidget {
   /// Static page id.
   static const String id = "Home";

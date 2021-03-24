@@ -1,9 +1,3 @@
-/// Second part of registering.
-/// 
-/// This part handles input for email and password. The user must confirm their
-/// password before being able to register. Furthermore, after registering, a
-/// confirmation email is sent to the email they entered to verify their account.
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +8,11 @@ import '../widgets/title_bar.dart';
 import 'package:club_app_2021/constants.dart';
 import 'package:email_validator/email_validator.dart';
 
+/// Second part of registering.
+/// 
+/// This part handles input for email and password. The user must confirm their
+/// password before being able to register. Furthermore, after registering, a
+/// confirmation email is sent to the email they entered to verify their account.
 class Register2 extends StatefulWidget {
   /// Static page id.
   static const String id = "Register2";

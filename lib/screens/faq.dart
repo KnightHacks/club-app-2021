@@ -1,8 +1,3 @@
-/// FAQ page.
-///
-/// Displays the FAQ expandable panels. FAQ items are parsed from json and uses
-/// the FAQListItem in models to be passed to the FAQList widget
-
 import 'dart:convert';
 import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:club_app_2021/model/FAQListItem.dart';
 import 'package:club_app_2021/widgets/faq_list.dart';
 
+/// FAQ page.
+///
+/// Displays the FAQ expandable panels. FAQ items are parsed from json and uses
+/// the FAQListItem in models to be passed to the FAQList widget
 class FAQ extends StatefulWidget {
   /// Static page id
   static const String id = "FAQ";

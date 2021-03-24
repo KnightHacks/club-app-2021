@@ -1,8 +1,3 @@
-/// This widget handles login.
-/// 
-/// This widget handles text input, validation, and navigation to the register
-/// page. It utilizes custom text input and button widgets.
-
 import 'package:club_app_2021/constants.dart';
 import 'package:club_app_2021/screens/home.dart';
 import 'package:club_app_2021/screens/register1.dart';
@@ -14,7 +9,10 @@ import 'package:flutter/services.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/resetpassword.dart';
 
-
+/// This widget handles login.
+/// 
+/// This widget handles text input, validation, and navigation to the register
+/// page. It utilizes custom text input and button widgets.
 class LoginForm extends StatefulWidget {
   @override
   _LoginFormState createState() => _LoginFormState();

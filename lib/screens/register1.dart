@@ -1,10 +1,3 @@
-/// Part one of the register page
-/// 
-/// Register was split up so that the register process would not seem as long.
-/// Part one handles input for full name, street address, apartment, city,
-/// state, zip code, and shirt size. At the end of the page, the continue button
-/// navigates the user to the second part of the register process.
-
 import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/screens/register2.dart';
@@ -12,6 +5,12 @@ import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
 import 'package:flutter/material.dart';
 
+/// Part one of the register page
+/// 
+/// Register was split up so that the register process would not seem as long.
+/// Part one handles input for full name, street address, apartment, city,
+/// state, zip code, and shirt size. At the end of the page, the continue button
+/// navigates the user to the second part of the register process.
 class Register1 extends StatefulWidget {
   /// Static page id
   static const String id = "Register1";

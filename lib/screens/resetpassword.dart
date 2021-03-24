@@ -1,13 +1,12 @@
-/// Password reset page.
-///
-/// Takes in an input for email and sends a reset email to the entered email.
-
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/screens/error.dart';
 import 'package:club_app_2021/screens/confirm.dart';
 
+/// Password reset page.
+///
+/// Takes in an input for email and sends a reset email to the entered email.
 class ResetPassword extends StatefulWidget {
   /// Static page id.
   static const id = 'ResetPassword';

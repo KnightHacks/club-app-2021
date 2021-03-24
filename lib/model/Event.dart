@@ -3,7 +3,6 @@
 /// This class is instantiated for the events retrieved from the notion api
 /// hosted by KnightHacks. The attributes for this object are a title, description,
 /// location, date time, and presenter.
-
 class KHEvent {
   String title;
   String description;
@@ -29,7 +28,7 @@ class KHEvent {
     presenter = map["presenter"];
   }
 
-  /// Returns the object as a string.
+  /// Returns the title and presenter in a string.
   String toString() {
     return title+" "+presenter;
   }

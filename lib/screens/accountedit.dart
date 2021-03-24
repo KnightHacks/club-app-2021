@@ -1,3 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:club_app_2021/model/KnightHacksUser.dart';
+import 'package:club_app_2021/screens/confirm.dart';
+import 'package:club_app_2021/screens/error.dart';
+import 'package:club_app_2021/widgets/rounded_button.dart';
+import 'package:club_app_2021/widgets/rounded_input.dart';
+import 'package:club_app_2021/widgets/title_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:club_app_2021/model/Prop.dart';
+
 /// Account editing page
 /// 
 /// Upon rendering, the text input fields should be prefilled with information
@@ -14,18 +25,6 @@
 /// Mobile Development Team who has access to the Firebase console to either
 /// delete their account have have them re-register, or edit their email
 /// which may or may not be possible.
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:club_app_2021/model/KnightHacksUser.dart';
-import 'package:club_app_2021/screens/confirm.dart';
-import 'package:club_app_2021/screens/error.dart';
-import 'package:club_app_2021/widgets/rounded_button.dart';
-import 'package:club_app_2021/widgets/rounded_input.dart';
-import 'package:club_app_2021/widgets/title_bar.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:club_app_2021/model/Prop.dart';
-
 class AccountEdit extends StatefulWidget {
   /// Static page id
   static const String id = "AccountEdit";

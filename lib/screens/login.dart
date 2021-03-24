@@ -1,10 +1,9 @@
-/// Login page
-/// 
-/// Page that contains the KnightHacks sword logo and the LoginForm widget.
-
 import 'package:flutter/material.dart';
 import '../widgets/login_form.dart';
 
+/// Login page
+/// 
+/// Page that contains the KnightHacks sword logo and the LoginForm widget.
 class Login extends StatefulWidget {
   /// Static page id.
   static const String id = "Login";
