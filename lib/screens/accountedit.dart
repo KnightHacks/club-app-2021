@@ -1,3 +1,20 @@
+/// Account editing page
+/// 
+/// Upon rendering, the text input fields should be prefilled with information
+/// retrieved from the account drawer widget. This allows for the user to see 
+/// all of their information and edit the fields they have to. Afterwards, 
+/// pressing the submit changes button will update the user's document in 
+/// firestore with all of the information entered, including the prefilled 
+/// inputs. Afterwards, the user should be navigated to the confirmation page.
+/// Editable fields are full name, street address, apartment, state, zipcode,
+/// shirt size, and password. We will not allow email changes since only users
+/// with knights emails should have accounts. Furthermore, changing a knights
+/// email is a process handled by the University of Central Florida. If a user
+/// does have their knights email changed, contact a member of the KnightHacks
+/// Mobile Development Team who has access to the Firebase console to either
+/// delete their account have have them re-register, or edit their email
+/// which may or may not be possible.
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/screens/confirm.dart';
@@ -10,6 +27,7 @@ import 'package:flutter/material.dart';
 import 'package:club_app_2021/model/Prop.dart';
 
 class AccountEdit extends StatefulWidget {
+  /// Static page id
   static const String id = "AccountEdit";
 
   @override
@@ -17,6 +35,8 @@ class AccountEdit extends StatefulWidget {
 }
 
 class _AccountEditState extends State<AccountEdit> {
+
+  /// Creating the controllers for each user and the KnightHackUser object.
   final _fullNameController = TextEditingController();
   final _streetController = TextEditingController();
   final _aptController = TextEditingController();
@@ -26,11 +46,15 @@ class _AccountEditState extends State<AccountEdit> {
   final _shirtSizeController = TextEditingController();
   KnightHackUser khUser;
 
+  /// Prepopulating the text fields.
   void _presetText() {
     try {
+
+      /// Retrieving the KnightHack user object passed in as a parameter.
       final Prop prop = ModalRoute.of(context).settings.arguments;
       khUser = prop.knightHackUser;
 
+      /// Setting the text
       _fullNameController.text = khUser.fullName;
       _streetController.text = khUser.street;
       _aptController.text = khUser.apartment;
@@ -44,10 +68,14 @@ class _AccountEditState extends State<AccountEdit> {
     }
   }
 
+  /// Called when submit changes is pressed.
+  /// 
+  /// Updates the user's document in firestore with the current input text.
   void _submitChanges(BuildContext context) async {
     final _firestore = Firestore.instance;
 
-    // need to change khUser.uid to the document id
+    /// Using docId to find the document that belongs to the current user.
+    /// updating the document in firestore.
     await _firestore
         .collection('user')
         .document(khUser.docId)
@@ -64,6 +92,10 @@ class _AccountEditState extends State<AccountEdit> {
         .catchError((error) => print(error.toString()));
   }
 
+  /// Called when reset password is pressed.
+  /// 
+  /// Sends the current user an email to the email stored in firestore that
+  /// will allow them to reset their password.
   void _resetPassword(BuildContext context) async{
     
     FirebaseAuth _auth = FirebaseAuth.instance;
@@ -85,6 +117,7 @@ class _AccountEditState extends State<AccountEdit> {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                /// All of the text fields and custom buttons
                 SizedBox(height: 30),
                 RoundedTextInput(
                   labelText: "Full Name",

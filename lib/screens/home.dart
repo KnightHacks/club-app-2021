@@ -1,3 +1,13 @@
+/// Home page.
+/// 
+/// The user is navigated to this page after logging in. This page also displays
+/// upcoming GBMs held by KnightHacks. Each page will contain an appbar with the
+///  account drawer.
+/// 
+/// Changes to be made:
+///  * Add tab switcher to include the FAQ page.
+///  * Hook up notion api to replace hard coded events.
+
 import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +16,7 @@ import 'package:club_app_2021/constants.dart';
 import 'package:club_app_2021/widgets/account_drawer.dart';
 
 class Home extends StatefulWidget {
+  /// Static page id.
   static const String id = "Home";
 
   @override
@@ -13,6 +24,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  /// Temporary hardcoded events.
   static const allEvents = [
     {
       "title": "Alexa Stock Ticker",
@@ -58,6 +70,7 @@ class _HomeState extends State<Home> {
 
   List<KHEvent> events = List<KHEvent>();
 
+  /// Retrieving the events as a list from the events json before rendering the widget.
   @override
   void initState() {
     super.initState();
@@ -67,13 +80,13 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: titleBar,
       drawer: AccountDrawer(),
       body: SafeArea(
         child: ListView(
           children: [
+            /// Displaying the events as expandable panels.
             ExpansionPanelList(
                 expansionCallback: (int index, bool isExpanded) {
                   setState(() {

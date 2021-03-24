@@ -1,8 +1,12 @@
+/// Login page
+/// 
+/// Page that contains the KnightHacks sword logo and the LoginForm widget.
+
 import 'package:flutter/material.dart';
 import '../widgets/login_form.dart';
 
-
 class Login extends StatefulWidget {
+  /// Static page id.
   static const String id = "Login";
 
   @override
@@ -24,13 +28,6 @@ class _LoginState extends State<Login> {
                   LoginForm()
                 )
               ),
-              // RoundedButton(
-              //       child: Text("Register"),
-              //       onPressed: (){
-              //         Navigator.pushNamed(context, Register2.id);
-              //       },
-              //       buttonColor: Color(0xffdbc04a),
-              // ),
             ],
           ),
         )
