@@ -1,10 +1,9 @@
-/// Error page
-/// 
-/// Under consideration for deletion in favor of using dialogue boxes.
-
 import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 
+/// Error page
+/// 
+/// Under consideration for deletion in favor of using dialogue boxes.
 class Error extends StatefulWidget {
   /// Static page id
   static const String id = "Error";

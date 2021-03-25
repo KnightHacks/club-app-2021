@@ -1,9 +1,10 @@
-/// Unused, under consideration for deletion.
-
 import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/widgets/account_drawer.dart';
 import 'package:flutter/material.dart';
 
+/// Account view page.
+/// 
+/// Unused, under consideration for deletion.
 class AccountView extends StatefulWidget {
   /// Static page id.
   static const String id = "AccountView";
