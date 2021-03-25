@@ -25,7 +25,6 @@ class _AccountEditState extends State<AccountEdit> {
   final _cityController = TextEditingController();
   final _stateController = TextEditingController();
   final _zipController = TextEditingController();
-  final _shirtSizeController = TextEditingController();
   ShirtSize _shirtSize = ShirtSize.M;
   KnightHackUser khUser;
 
@@ -48,7 +47,7 @@ class _AccountEditState extends State<AccountEdit> {
   }
 
   void onTShirtChange(ShirtSize value) {
-    print(value);
+    _shirtSize = value;
   }
 
   void _submitChanges(BuildContext context) async {
@@ -65,7 +64,7 @@ class _AccountEditState extends State<AccountEdit> {
           'city': _cityController.text,
           'state': _stateController.text,
           'zip': _zipController.text,
-          'shirtSize': _shirtSizeController.text,
+          'shirtSize': _shirtSize.displayName,
         })
         .then((value) => Navigator.pop(context))
         .catchError((error) => print(error.toString()));
@@ -129,14 +128,15 @@ class _AccountEditState extends State<AccountEdit> {
                   controller: _stateController,
                 ),
                 SizedBox(height: 30),
-                TShirtSelector(
-                  value: _shirtSize,
-                  onChange: onTShirtChange,
-                ),
-                RoundedTextInput(
-                  labelText: "T-shirt Size (Unisex)",
-                  autocorrect: false,
-                  controller: _shirtSizeController,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Shirt Size:"),
+                    SizedBox(width: 50,),
+                    TShirtSelector(
+                      onChange: onTShirtChange,
+                    ),
+                  ],
                 ),
                 SizedBox(height: 30),
                 RoundedButton(
