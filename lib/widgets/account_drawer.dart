@@ -45,7 +45,7 @@ class _AccountDrawerState extends State<AccountDrawer> {
           city: data["city"].toString(),
           state: data["state"].toString(),
           zip: data["zip"].toString(),
-          shirtSize: data["shirtSize"].toString(),
+          //shirtSize: data["shirtSize"].toString(),
         );
       });
 

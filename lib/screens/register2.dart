@@ -7,6 +7,7 @@ import 'package:club_app_2021/screens/confirm.dart';
 import '../widgets/title_bar.dart';
 import 'package:club_app_2021/constants.dart';
 import 'package:email_validator/email_validator.dart';
+import '../model/ShirtSize.dart';
 
 class Register2 extends StatefulWidget {
   static const String id = "Register2";
@@ -115,7 +116,7 @@ class _Register2State extends State<Register2> {
                             'city': _user.city,
                             'state': _user.state,
                             'zip': _user.zip,
-                            'shirtSize': _user.shirtSize
+                            'shirtSize': _user.shirtSize.displayName,
                           });
                           try {
                             await user.sendEmailVerification();
