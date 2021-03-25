@@ -155,17 +155,26 @@ class _LoginFormState extends State<LoginForm> {
                  showLoadingDialogue(context);
                },
                child: Text("Login"),
+               buttonColor: Colors.amber,
              ),
-             SizedBox(height: 20),
-              RoundedButton(
-                onPressed: () =>Navigator.popAndPushNamed(context, ResetPassword.id),
-                child: Text("Forget your Password?"),
-              ),
              SizedBox(height: 20),
              RoundedButton(
                  child: Text("Register"),
-                 onPressed: () => Navigator.pushNamed(context, Register1.id)
-             )
+                 onPressed: () => Navigator.pushNamed(context, Register1.id),
+                 buttonColor: Colors.pinkAccent
+             ),
+             SizedBox(height: 5),
+              RoundedButton(
+                onPressed: () =>Navigator.pushNamed(context, ResetPassword.id),
+                child: Text(
+                  "Forget your Password?",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                buttonColor: Color(0xFF1A1843),
+              ),
            ],
          ),
         ),
