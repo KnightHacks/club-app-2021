@@ -161,7 +161,7 @@ class _LoginFormState extends State<LoginForm> {
              RoundedButton(
                  child: Text("Register"),
                  onPressed: () => Navigator.pushNamed(context, Register1.id),
-                 buttonColor: Colors.pinkAccent
+                 buttonColor: kPinkColor
              ),
              SizedBox(height: 5),
               RoundedButton(

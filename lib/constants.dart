@@ -22,3 +22,8 @@ TextStyle kGeneralTextStyle = TextStyle(
 );
 
 Color kIconColor = Colors.white;
+
+Color kPinkColor = Color(0xFFb7517c);
+Color kDarkBlueColor = Color(0xFF1A1843);
+Color kLightBlueColor = Color(0xFF36328B);
+Color kGoldColor = Colors.amber;

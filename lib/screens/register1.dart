@@ -3,6 +3,7 @@ import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/screens/register2.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
+import 'package:club_app_2021/constants.dart';
 import 'package:flutter/material.dart';
 
 class Register1 extends StatefulWidget {
@@ -119,7 +120,7 @@ class _Register1State extends State<Register1> {
                   RoundedButton(
                     child: Text("Go Back"),
                     onPressed: () => Navigator.pop(context),
-                    buttonColor: Colors.pinkAccent
+                    buttonColor: kPinkColor,
                   )
                 ],
               ),

@@ -18,26 +18,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-     theme: ThemeData.dark().copyWith(
-       primaryColor: Color(0xFF1A1843),
-       scaffoldBackgroundColor: Color(0xFF1A1843),
-       accentColor:  Color(0xFFb7517c),
-       toggleableActiveColor: Color(0xFF36328B),
-       cardColor: Color(0xFF36328B),
-       //iconTheme: IconThemeData(color:  Color(0xFF1A1843)),
-       //inactive color
-
-     ),
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color(0xFF1A1843),
+        scaffoldBackgroundColor: Color(0xFF1A1843),
+        accentColor: Color(0xFFb7517c),
+        toggleableActiveColor: Color(0xFF36328B),
+        cardColor: Color(0xFF36328B),
+        //iconTheme: IconThemeData(color:  Color(0xFF1A1843)),
+        //inactive color
+      ),
       initialRoute: Login.id,
       routes: {
-        Login.id : (context) => Login(),
-        Register1.id : (context) => Register1(),
-        Register2.id : (context) => Register2(),
-        Home.id : (context) => Home(),
-        AccountView.id : (context) => AccountView(),
-        AccountEdit.id : (context) => AccountEdit(),
-        FAQ.id : (context) => FAQ(),
-        Error.id : (context) => Error(),
+        Login.id: (context) => Login(),
+        Register1.id: (context) => Register1(),
+        Register2.id: (context) => Register2(),
+        Home.id: (context) => Home(),
+        AccountView.id: (context) => AccountView(),
+        AccountEdit.id: (context) => AccountEdit(),
+        FAQ.id: (context) => FAQ(),
+        Error.id: (context) => Error(),
         Confirm.id: (context) => Confirm(),
         ResetPassword.id: (context) => ResetPassword(),
       },
