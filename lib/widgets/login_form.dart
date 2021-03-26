@@ -28,7 +28,7 @@ class _LoginFormState extends State<LoginForm> {
     if (value.isEmpty) {
       return "Please enter Email";
     }
-    if (!EmailValidator.validate(value) && value.contains(knightsEmail)) {
+    if (!EmailValidator.validate(value) && (value.contains(knightsEmail) || value.contains(ucfEmail))) {
       return "Please enter valid knights email";
     }
     return null;
