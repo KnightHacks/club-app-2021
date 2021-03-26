@@ -15,7 +15,7 @@ class KHEvent {
 
   KHEvent.from(Map<String, dynamic> map) {
     title = map["name"];
-    description = "Description";
+    description = map["description"];
     location = "Zoom";
     dateTime = DateTime.parse(map["date"]);
     presenter = map["presenter"];
