@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
+import 'package:club_app_2021/model/ShirtSize.dart';
 import 'package:club_app_2021/screens/confirm.dart';
 import 'package:club_app_2021/screens/error.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
 import 'package:club_app_2021/widgets/title_bar.dart';
+import 'package:club_app_2021/widgets/tshirt_selector.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/model/Prop.dart';
@@ -23,7 +25,7 @@ class _AccountEditState extends State<AccountEdit> {
   final _cityController = TextEditingController();
   final _stateController = TextEditingController();
   final _zipController = TextEditingController();
-  final _shirtSizeController = TextEditingController();
+  ShirtSize _shirtSize = ShirtSize.M;
   KnightHackUser khUser;
 
   void _presetText() {
@@ -37,11 +39,15 @@ class _AccountEditState extends State<AccountEdit> {
       _cityController.text = khUser.city;
       _stateController.text = khUser.state;
       _zipController.text = khUser.zip;
-      _shirtSizeController.text = khUser.shirtSize;
+      _shirtSize = khUser.shirtSize;
     } catch (e) {
       print(e.toString());
       Navigator.pushNamed(context, Error.id);
     }
+  }
+
+  void onTShirtChange(ShirtSize value) {
+    _shirtSize = value;
   }
 
   void _submitChanges(BuildContext context) async {
@@ -58,7 +64,7 @@ class _AccountEditState extends State<AccountEdit> {
           'city': _cityController.text,
           'state': _stateController.text,
           'zip': _zipController.text,
-          'shirtSize': _shirtSizeController.text,
+          'shirtSize': _shirtSize.displayName,
         })
         .then((value) => Navigator.pop(context))
         .catchError((error) => print(error.toString()));
@@ -122,10 +128,15 @@ class _AccountEditState extends State<AccountEdit> {
                   controller: _stateController,
                 ),
                 SizedBox(height: 30),
-                RoundedTextInput(
-                  labelText: "T-shirt Size (Unisex)",
-                  autocorrect: false,
-                  controller: _shirtSizeController,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Shirt Size:"),
+                    SizedBox(width: 50,),
+                    TShirtSelector(
+                      onChange: onTShirtChange,
+                    ),
+                  ],
                 ),
                 SizedBox(height: 30),
                 RoundedButton(

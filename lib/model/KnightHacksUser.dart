@@ -1,3 +1,4 @@
+import 'package:club_app_2021/model/ShirtSize.dart';
 import 'package:flutter/material.dart';
 
 class KnightHackUser extends InheritedWidget {
@@ -11,7 +12,7 @@ class KnightHackUser extends InheritedWidget {
   final String city;
   final String state;
   final String zip;
-  final String shirtSize;
+  final ShirtSize shirtSize;
 
   KnightHackUser({
     this.uid,
