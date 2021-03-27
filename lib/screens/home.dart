@@ -34,54 +34,60 @@ class _HomeState extends State<Home> {
       appBar: titleBar,
       drawer: AccountDrawer(),
       body: SafeArea(
-        child: ListView(
-          children: [
-            ExpansionPanelList(
-                expansionCallback: (int index, bool isExpanded) {
-                  setState(() {
-                    // Toggle state on the callback
-                    events[index].isExpanded = !isExpanded;
-                  });
-                },
-                children: events
-                    .map(
-                      (e) => ExpansionPanel(
-                        headerBuilder: (BuildContext context, bool isExpanded) {
-                          return ListTile(
-                            title: Text(e.title, style: kCardTitleStyle),
-                          );
-                        },
-                        body: Container(
-                          margin: EdgeInsets.symmetric(horizontal: 20),
-                          padding: EdgeInsets.all(10),
-                          child: Column(
-                            children: <Widget>[
-                              Text(e.description, style: kCardDescriptionStyle),
-                              SizedBox(height: 20),
-                              FlatButton.icon(
-                                  color: Theme.of(context).accentColor,
-                                  onPressed: () {
-                                    final Event event = Event(
-                                      title: e.title,
-                                      description: e.description,
-                                      startDate: e.dateTime,
-                                      endDate: e.dateTime,
-                                    );
-                                    Add2Calendar.addEvent2Cal(event);
-                                  },
-                                  icon: Icon(Icons.calendar_today_outlined),
-                                  label: Text(
-                                    'Add to Calendar',
-                                    style: kAddToCalStyle,
-                                  )),
-                            ],
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: ListView(
+            children: [
+              ExpansionPanelList(
+                  expansionCallback: (int index, bool isExpanded) {
+                    setState(() {
+                      // Toggle state on the callback
+                      events[index].isExpanded = !isExpanded;
+                    });
+                  },
+                  dividerColor: Color(0xFF1A1843),
+                  children: events
+                      .map(
+                        (e) => ExpansionPanel(
+                          headerBuilder: (BuildContext context, bool isExpanded) {
+                            return ListTile(
+                              title: Text(e.title, style: kCardTitleStyle),
+                            );
+                          },
+                          body: Container(
+                            margin: EdgeInsets.symmetric(horizontal: 20),
+                            padding: EdgeInsets.all(10),
+                            child: Column(
+                              children: <Widget>[
+                                Text(e.description, style: kCardDescriptionStyle),
+                                SizedBox(height: 20),
+                                FlatButton.icon(
+                                    color: Theme.of(context).accentColor,
+                                    onPressed: () {
+                                      final Event event = Event(
+                                        title: e.title,
+                                        description: e.description,
+                                        startDate: e.dateTime,
+                                        endDate: e.dateTime,
+                                      );
+                                      Add2Calendar.addEvent2Cal(event);
+                                    },
+                                    icon: Icon(
+                                      Icons.calendar_today_outlined
+                                    ),
+                                    label: Text(
+                                      'Add to Calendar',
+                                      style: kAddToCalStyle,
+                                    )),
+                              ],
+                            ),
                           ),
+                          isExpanded: e.isExpanded,
                         ),
-                        isExpanded: e.isExpanded,
-                      ),
-                    )
-                    .toList())
-          ],
+                      )
+                      .toList())
+            ],
+          ),
         ),
       ),
     );
