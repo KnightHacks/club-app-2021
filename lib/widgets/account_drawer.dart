@@ -6,6 +6,24 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
 
+
+
+
+
+
+
+
+
+
+
+/// IMPORTANT
+/// I think we will have to make the KhUser in login as originally planned, and pass it to home and the login drawer.
+/// this is because we can load the user info into the account drawer, but since its async, there will be an error flash
+/// when you open it first but after half a second, everything is fine. Therefore, we should probably just make the khUser
+/// object on login and pass it since its fast to get the current user's email, but takes time to hit firestore and get the
+/// user's info. Screens that need the khUser are account drawer and account edit which warrants this action.
+/// 
+
 class AccountDrawer extends StatefulWidget {  
   @override
   _AccountDrawerState createState() => _AccountDrawerState();
