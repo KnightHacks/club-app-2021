@@ -6,23 +6,22 @@ class KHEvent {
   String presenter;
   bool isExpanded = false;
 
-  KHEvent({
-    this.title,
-    this.description,
-    this.location,
-    this.dateTime,
-    this.presenter
-  });
+  KHEvent(
+      {this.title,
+      this.description,
+      this.location,
+      this.dateTime,
+      this.presenter});
 
-  KHEvent.from(Map<String, String> map) {
-    title = map["title"];
+  KHEvent.from(Map<String, dynamic> map) {
+    title = map["name"];
     description = map["description"];
-    location = map["location"];
-    dateTime = DateTime.parse(map["dateTime"]);
+    location = "Zoom";
+    dateTime = DateTime.parse(map["date"]);
     presenter = map["presenter"];
   }
 
   String toString() {
-    return title+" "+presenter;
+    return title + " " + presenter;
   }
 }
