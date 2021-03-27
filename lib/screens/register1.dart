@@ -113,7 +113,7 @@ class _Register1State extends State<Register1> {
                         city: _cityController.text,
                         state: _stateController.text,
                         zip: _zipController.text,
-                        shirtSize: _shirtSizeController.text
+                        shirtSize: _shirtSize,
                       );
 
                       Navigator.push(
