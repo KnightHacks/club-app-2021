@@ -44,8 +44,8 @@ class _Register2State extends State<Register2> {
     if (value.isEmpty) {
       return "Please enter Email";
     }
-    if (!EmailValidator.validate(value) || !value.contains(knightsEmail)) {
-      return "Please enter valid knights email";
+    if (!EmailValidator.validate(value) || !(value.contains(knightsEmail) || value.contains(ucfEmail))) {
+      return "Please enter valid knights or UCF email";
     }
     return null;
   };
@@ -114,7 +114,7 @@ class _Register2State extends State<Register2> {
                     TextFormField(
                       //contains email
                       decoration: InputDecoration(
-                          labelText: "Knights Email", border: inputBorder),
+                          labelText: "Knights Or UCF Email", border: inputBorder),
                       keyboardType: TextInputType.emailAddress,
                       enableSuggestions: false,
                       autocorrect: false,
