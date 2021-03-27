@@ -79,28 +79,35 @@ class _AccountDrawerState extends State<AccountDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        children: <Widget>[
-          DrawerHeader(
-            child: Image.asset("assets/knightHacksLogoGold.png"),
-            decoration: BoxDecoration(
-                color: Colors.deepPurple
+      child: Container(
+        color: Color(0xFF1A1843),
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+              child: Image.asset("assets/knightHacksLogoGold.png"),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  width: 0,
+                  color: Color(0xFF1A1843),
+                ),
+              ),
             ),
-          ),
-          ListTile(
-            title: Text(_user?.email ?? "email@email.com"),
-            leading: Icon(Icons.email),
-          ),
-          FlatButton(
-            onPressed: () => _goToEdit(context),
-            child: Text("Edit"),
-            color: Colors.amber,
-          ),
-          FlatButton(
-              onPressed: () => logout(context),
-              child: Text("Logout", textAlign: TextAlign.left,)
-          )
-        ],
+            ListTile(
+              title: Text(_user?.email ?? "email@email.com"),
+              leading: Icon(Icons.email),
+            ),
+            FlatButton(
+              onPressed: () => _goToEdit(context),
+              child: Text("Edit"),
+              color: Color(0xFF36328B),
+            ),
+            FlatButton(
+                onPressed: () => logout(context),
+                child: Text("Logout", textAlign: TextAlign.left),
+                color: Color(0xFF36328B)
+            )
+          ],
+        ),
       ),
     );
   }

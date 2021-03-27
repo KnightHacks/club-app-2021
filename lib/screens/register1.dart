@@ -4,6 +4,7 @@ import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/screens/register2.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
+import 'package:club_app_2021/constants.dart';
 import 'package:club_app_2021/widgets/tshirt_selector.dart';
 import 'package:flutter/material.dart';
 
@@ -49,78 +50,91 @@ class _Register1State extends State<Register1> {
         child: SingleChildScrollView(
           child: Form(
             key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                RoundedTextInput(
-                  validator: _validate,
-                  labelText: "Full Name",
-                  controller: _fullNameController,
-                ),
-                RoundedTextInput(
-                  validator: _validate,
-                  labelText: "Street",
-                  controller: _streetController,
-                ),
-                RoundedTextInput(
-                  labelText: "Apartment",
-                  controller: _aptController,
-                ),
-                RoundedTextInput(
-                  validator: _validate,
-                  labelText: "City",
-                  controller: _cityController,
-                ),
-                RoundedTextInput(
-                  validator: _validate,
-                  labelText: "State",
-                  controller: _stateController,
-                ),
-                RoundedTextInput(
-                  validator: _validate,
-                  labelText: "ZIP",
-                  controller: _zipController,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Shirt Size:"),
-                    SizedBox(width: 50,),
-                    TShirtSelector(
-                      onChange: onTShirtChange,
-                    ),
-                  ],
-                ),
-                RoundedButton(
-                  child: Text("Continue"),
-                  onPressed: () {
-                    // Validate inputs
-                    _formKey.currentState.validate();
-                    _user = KnightHackUser(
-                      fullName: _fullNameController.text,
-                      street: _streetController.text,
-                      apartment: _aptController.text,
-                      city: _cityController.text,
-                      state: _stateController.text,
-                      zip: _zipController.text,
-                      shirtSize: _shirtSize,
-                    );
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  SizedBox(height: 20),
+                  RoundedTextInput(
+                    validator: _validate,
+                    labelText: "Full Name",
+                    controller: _fullNameController,
+                  ),
+                  SizedBox(height: 20),
+                  RoundedTextInput(
+                    validator: _validate,
+                    labelText: "Street",
+                    controller: _streetController,
+                  ),
+                  SizedBox(height: 20),
+                  RoundedTextInput(
+                    labelText: "Apartment",
+                    controller: _aptController,
+                  ),
+                  SizedBox(height: 20),
+                  RoundedTextInput(
+                    validator: _validate,
+                    labelText: "City",
+                    controller: _cityController,
+                  ),
+                  SizedBox(height: 20),
+                  RoundedTextInput(
+                    validator: _validate,
+                    labelText: "State",
+                    controller: _stateController,
+                  ),
+                  SizedBox(height: 20),
+                  RoundedTextInput(
+                    validator: _validate,
+                    labelText: "ZIP",
+                    controller: _zipController,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Shirt Size:"),
+                      SizedBox(width: 50,),
+                      TShirtSelector(
+                        onChange: onTShirtChange,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  RoundedButton(
+                    child: Text("Continue"),
+                    onPressed: () {
+                      // Validate inputs
+                      _formKey.currentState.validate();
+                      _user = KnightHackUser(
+                        fullName: _fullNameController.text,
+                        street: _streetController.text,
+                        apartment: _aptController.text,
+                        city: _cityController.text,
+                        state: _stateController.text,
+                        zip: _zipController.text,
+                        shirtSize: _shirtSizeController.text
+                      );
 
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Register2(
-                          user: _user,
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Register2(
+                            user: _user,
+                          )
                         )
-                      )
-                    );
-                  },
-                ),
-                RoundedButton(
-                  child: Text("Go Back"),
-                  onPressed: () => Navigator.pop(context),
-                )
-              ],
+                      );
+                    },
+                    buttonColor: Colors.amber,
+                  ),
+                  SizedBox(height: 10),
+                  RoundedButton(
+                    child: Text("Go Back"),
+                    onPressed: () => Navigator.pop(context),
+                    buttonColor: kPinkColor,
+                  )
+                ],
+              ),
             ),
           ),
         )

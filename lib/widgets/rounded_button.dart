@@ -20,6 +20,7 @@ class RoundedButton extends StatelessWidget {
       minWidth: 200.0,
       height: height,
       child: child,
+      elevation: 0,
       shape: RoundedRectangleBorder(
         // Why (height / 2)? We want a perfect
         // circular border. The only way to achieve
