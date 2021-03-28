@@ -1,97 +1,38 @@
 import 'package:club_app_2021/model/Prop.dart';
+import 'package:club_app_2021/model/ShirtSize.dart';
 import 'package:club_app_2021/screens/accountedit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
 
+class AccountDrawer extends StatefulWidget {
+  final KnightHackUser khUser;  
 
+  AccountDrawer({@required this.khUser});
 
-
-
-
-
-
-
-
-
-/// IMPORTANT
-/// I think we will have to make the KhUser in login as originally planned, and pass it to home and the login drawer.
-/// this is because we can load the user info into the account drawer, but since its async, there will be an error flash
-/// when you open it first but after half a second, everything is fine. Therefore, we should probably just make the khUser
-/// object on login and pass it since its fast to get the current user's email, but takes time to hit firestore and get the
-/// user's info. Screens that need the khUser are account drawer and account edit which warrants this action.
-/// 
-
-class AccountDrawer extends StatefulWidget {  
   @override
-  _AccountDrawerState createState() => _AccountDrawerState();
+  _AccountDrawerState createState() => _AccountDrawerState(khUser: khUser);
 }
 
 class _AccountDrawerState extends State<AccountDrawer> {
 
   final _auth = FirebaseAuth.instance;
-  FirebaseUser _user;
+  final KnightHackUser khUser;
 
-  KnightHackUser khUser;
-  Map<String, dynamic> data;
+  _AccountDrawerState({@required this.khUser});
 
   void _goToEdit(BuildContext context) async {
-    try{
-      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    KnightHackUser returnedInfo;
 
-      String id = user.uid;
-      final _firestore = Firestore.instance;
-
-      await _firestore
-          .collection('user')
-          .where('uid', isEqualTo: id)
-          .getDocuments()
-          .then((value) {
-        // always returns an array of documents
-        // casting it as a Map
-        data = value.documents[0].data;
-
-        khUser = new KnightHackUser(
-          uid: data["uid"].toString(),
-          docId: value.documents[0].documentID,
-          email: _user.email,
-          fullName: data["fullName"].toString(),
-          street: data["street"].toString(),
-          apartment: data["apartment"].toString(),
-          city: data["city"].toString(),
-          state: data["state"].toString(),
-          zip: data["zip"].toString(),
-          //shirtSize: data["shirtSize"].toString(),
-        );
-      });
-
-      // print(khUser.toString());
-      Navigator.pushNamed(context, AccountEdit.id, arguments: Prop(khUser));
-    } catch(e){
-
-      print(e.toString());
-    }
+    returnedInfo = await Navigator.pushNamed(context, AccountEdit.id, arguments: Prop(khUser));
   }
-
 
   void logout(BuildContext context) {
     _auth.signOut().then((value) => {
       // Move back to the Login page.
       Navigator.popAndPushNamed(context, "Login")
     });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    try {
-      _auth.currentUser()
-          .then((user) => setState(() => _user = user));
-    } catch(e) {
-      print(e);
-    }
   }
 
   @override
@@ -111,8 +52,24 @@ class _AccountDrawerState extends State<AccountDrawer> {
               ),
             ),
             ListTile(
-              title: Text(_user?.email ?? "email@email.com"),
+              title: Text(khUser.fullName ?? "Knightro"),
+              leading: Icon(Icons.account_circle),
+            ),
+            ListTile(
+              title: Text(khUser.email ?? "email@email.com"),
               leading: Icon(Icons.email),
+            ),
+            ListTile(
+              title: Text(khUser.street + (khUser.apartment.isEmpty ? "" : "\n " + khUser.apartment) ?? "123 Street St."),
+              leading: Icon(Icons.home),
+            ),
+            ListTile(
+              title: Text(khUser.city + ", " + khUser.state + ", " + khUser.zip ?? "No City Listed"),
+              leading: Icon(Icons.location_city),
+            ),
+            ListTile(
+              title: Text("Shirt size: " + khUser.shirtSize.displayName ?? "No Shirt Size Listed"),
+              
             ),
             FlatButton(
               onPressed: () => _goToEdit(context),

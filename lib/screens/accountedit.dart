@@ -66,7 +66,18 @@ class _AccountEditState extends State<AccountEdit> {
           'zip': _zipController.text,
           'shirtSize': _shirtSize.displayName,
         })
-        .then((value) => Navigator.pop(context))
+        .then((value) {
+          KnightHackUser updatedUser = new KnightHackUser(
+            fullName: _fullNameController.text,
+            street: _streetController.text,
+            apartment: _aptController.text,
+            city: _cityController.text,
+            state: _stateController.text,
+            zip: _zipController.text,
+            shirtSize: _shirtSize,
+          );
+          Navigator.pop(context, updatedUser);
+        })
         .catchError((error) => print(error.toString()));
   }
 

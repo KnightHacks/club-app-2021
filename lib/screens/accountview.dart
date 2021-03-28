@@ -1,5 +1,4 @@
 import 'package:club_app_2021/model/KnightHacksUser.dart';
-import 'package:club_app_2021/widgets/account_drawer.dart';
 import 'package:flutter/material.dart';
 
 class AccountView extends StatefulWidget {
@@ -24,7 +23,6 @@ class _AccountViewState extends State<AccountView> {
       appBar: AppBar(
         title: Text("Test"),
       ),
-      drawer: AccountDrawer(),
       body: SafeArea(
         child: Column()
       ),
