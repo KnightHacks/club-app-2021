@@ -42,7 +42,19 @@ class _AccountEditState extends State<AccountEdit> {
       _shirtSize = khUser.shirtSize;
     } catch (e) {
       print(e.toString());
-      Navigator.pushNamed(context, Error.id);
+      showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Unable to load account info."),
+                actions: <Widget>[
+                  new FlatButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text("Close"))
+                ],
+              );
+            },
+          );
     }
   }
 
@@ -52,7 +64,7 @@ class _AccountEditState extends State<AccountEdit> {
 
   void _submitChanges(BuildContext context) async {
     final _firestore = Firestore.instance;
-    
+
     await _firestore
         .collection('user')
         .document(khUser.docId)
@@ -77,7 +89,22 @@ class _AccountEditState extends State<AccountEdit> {
           );
           Navigator.pop(context, updatedUser);
         })
-        .catchError((error) => print(error.toString()));
+        .catchError((error) {
+          print(error.toString());
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Unable to update account info, try again later."),
+                actions: <Widget>[
+                  new FlatButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text("Close"))
+                ],
+              );
+            },
+          );
+        });
   }
 
   void _resetPassword(BuildContext context) async{
@@ -145,6 +172,7 @@ class _AccountEditState extends State<AccountEdit> {
                     SizedBox(width: 50,),
                     TShirtSelector(
                       onChange: onTShirtChange,
+                      value: khUser.shirtSize,
                     ),
                   ],
                 ),
