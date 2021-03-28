@@ -1,5 +1,5 @@
 import 'package:club_app_2021/constants.dart';
-import 'package:club_app_2021/screens/home.dart';
+import 'package:club_app_2021/screens/loading_screen.dart';
 import 'package:club_app_2021/screens/register1.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
 import 'package:email_validator/email_validator.dart';
@@ -50,7 +50,7 @@ class _LoginFormState extends State<LoginForm> {
       FirebaseUser user = res.user;
      
         if (user.isEmailVerified) {
-          Navigator.popAndPushNamed(context, Home.id);
+          Navigator.popAndPushNamed(context, LoadingScreen.id);
         } else {
           showDialog(
             context: context,
@@ -135,7 +135,7 @@ class _LoginFormState extends State<LoginForm> {
                onPressed: () {
                  _login(context).then((value) {
                    Navigator.of(context, rootNavigator: true).pop('dialog');
-                   Navigator.popAndPushNamed(context, Home.id);
+                   Navigator.popAndPushNamed(context, LoadingScreen.id);
                  })
                  .catchError((err) {
                    print(err.toString());
@@ -154,7 +154,6 @@ class _LoginFormState extends State<LoginForm> {
                      },
                    );
                  });
-                 showLoadingDialogue(context);
                },
                child: Text("Login"),
                buttonColor: Colors.amber,
