@@ -52,8 +52,8 @@ class _AccountEditState extends State<AccountEdit> {
 
   void _submitChanges(BuildContext context) async {
     final _firestore = Firestore.instance;
+    print(khUser.docId);
 
-    // need to change khUser.uid to the document id
     await _firestore
         .collection('user')
         .document(khUser.docId)

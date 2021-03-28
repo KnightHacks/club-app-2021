@@ -18,14 +18,19 @@ class AccountDrawer extends StatefulWidget {
 class _AccountDrawerState extends State<AccountDrawer> {
 
   final _auth = FirebaseAuth.instance;
-  final KnightHackUser khUser;
+  KnightHackUser khUser;
 
   _AccountDrawerState({@required this.khUser});
 
-  void _goToEdit(BuildContext context) async {
-    KnightHackUser returnedInfo;
+  void _goToEdit(BuildContext context) async{
+    dynamic returnedInfo;
 
     returnedInfo = await Navigator.pushNamed(context, AccountEdit.id, arguments: Prop(khUser));
+
+    if(returnedInfo != null)  
+      setState(() {
+      khUser = returnedInfo;
+      });
   }
 
   void logout(BuildContext context) {
