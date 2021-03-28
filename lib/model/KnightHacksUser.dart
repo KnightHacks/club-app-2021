@@ -42,7 +42,7 @@ class KnightHackUser extends InheritedWidget {
   String summary() {
     try{
       return "Name: " + fullName + ", email: " + email + ", address: " + street + " " + apartment + " " + city + " " + state + " " + zip + 
-      "shirt size: " + shirtSize.displayName;
+      ", shirt size: " + shirtSize.displayName;
     } catch(e){
       return "Some field was null.";
     }

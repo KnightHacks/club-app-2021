@@ -1,5 +1,4 @@
 import 'package:club_app_2021/constants.dart';
-import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/screens/home.dart';
 import 'package:club_app_2021/screens/register1.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
@@ -9,8 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/resetpassword.dart';
-import 'package:club_app_2021/model/ShirtSize.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -36,46 +33,6 @@ class _LoginFormState extends State<LoginForm> {
     return null;
   };
 
-  /// Converts String to ShirtSize
-  /// 
-  /// Turns string returned from firestore into a ShirtSize so it can be stored
-  /// in KhUser object and passed.
-  ShirtSize stringToShirtSize (String size){
-
-    ShirtSize res;
-    try{
-      switch(size){
-
-        case "S":
-          res = ShirtSize.S;
-          break;
-
-        case "M":
-          res = ShirtSize.M;
-          break;
-        
-        case "L":
-          res = ShirtSize.L;
-          break;
-
-        case "XL":
-          res = ShirtSize.XL;
-          break;
-
-        case "XXL":
-          res = ShirtSize.XXL;
-          break;
-        
-        default:
-          res = null;
-          break;
-      }
-    } catch(e){
-      print(e.toString());
-    }
-    return res;
-  }
-
   Future<void> _login(BuildContext context) async {
     if (!_formKey.currentState.validate()) {
       throw new Error();
@@ -91,53 +48,25 @@ class _LoginFormState extends State<LoginForm> {
 
       // Grabbing user info and putting in KhUser object.
       FirebaseUser user = res.user;
-      KnightHackUser khUser;
-      String id = user.uid;
-      final _firestore = Firestore.instance;
-      Map <String, dynamic> data;
-
-      await _firestore
-          .collection('user')
-          .where('uid', isEqualTo: id)
-          .getDocuments()
-          .then((value) {
-        // always returns an array of documents
-        // casting it as a Map
-        data = value.documents[0].data;
-
-        khUser = new KnightHackUser(
-          uid: data["uid"].toString(),
-          docId: value.documents[0].documentID,
-          email: user.email,
-          fullName: data["fullName"].toString(),
-          street: data["street"].toString(),
-          apartment: data["apartment"].toString(),
-          city: data["city"].toString(),
-          state: data["state"].toString(),
-          zip: data["zip"].toString(),
-          shirtSize: stringToShirtSize(data["shirtSize"]), // issues with this line, shirtSize is not of type string
-        );
-      });
-
-      print(khUser.summary());
-
-      if (user.isEmailVerified) {
-        Navigator.popAndPushNamed(context, Home.id);
-      } else {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text("Please check email for verification link"),
-              actions: <Widget>[
-                new FlatButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: Text("Close"))
-              ],
-            );
-          },
-        );
-      }
+     
+        if (user.isEmailVerified) {
+          Navigator.popAndPushNamed(context, Home.id);
+        } else {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Please check email for verification link"),
+                actions: <Widget>[
+                  new FlatButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text("Close"))
+                ],
+              );
+            },
+          );
+        }
+      
     } catch(e) {
       throw e;
     }
