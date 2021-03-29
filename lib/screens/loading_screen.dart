@@ -122,7 +122,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SpinKitFadingGrid(
+        child: SpinKitThreeBounce(
           color: kGoldColor,
           size: 100.0,
         ),
