@@ -38,4 +38,13 @@ class KnightHackUser extends InheritedWidget {
   bool updateShouldNotify(KnightHackUser oldUser) {
     return fullName != oldUser.fullName;
   }
+
+  String summary() {
+    try{
+      return "Name: " + fullName + ", email: " + email + ", address: " + street + " " + apartment + " " + city + " " + state + " " + zip + 
+      ", shirt size: " + shirtSize.displayName;
+    } catch(e){
+      return "Some field was null.";
+    }
+  }
 }

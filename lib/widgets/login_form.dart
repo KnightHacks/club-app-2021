@@ -1,5 +1,5 @@
 import 'package:club_app_2021/constants.dart';
-import 'package:club_app_2021/screens/home.dart';
+import 'package:club_app_2021/screens/loading_screen.dart';
 import 'package:club_app_2021/screens/register1.dart';
 import 'package:club_app_2021/widgets/rounded_input.dart';
 import 'package:email_validator/email_validator.dart';
@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/resetpassword.dart';
-
 
 class LoginForm extends StatefulWidget {
   @override
@@ -47,25 +46,27 @@ class _LoginFormState extends State<LoginForm> {
       AuthResult res = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
 
+      // Grabbing user info and putting in KhUser object.
       FirebaseUser user = res.user;
-
-      if (user.isEmailVerified) {
-        Navigator.popAndPushNamed(context, Home.id);
-      } else {
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text("Please check email for verification link"),
-              actions: <Widget>[
-                new FlatButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: Text("Close"))
-              ],
-            );
-          },
-        );
-      }
+     
+        if (user.isEmailVerified) {
+          Navigator.popAndPushNamed(context, LoadingScreen.id);
+        } else {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Please check email for verification link"),
+                actions: <Widget>[
+                  new FlatButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text("Close"))
+                ],
+              );
+            },
+          );
+        }
+      
     } catch(e) {
       throw e;
     }
@@ -133,11 +134,12 @@ class _LoginFormState extends State<LoginForm> {
              RoundedButton(
                onPressed: () {
                  _login(context).then((value) {
-                   Navigator.of(context, rootNavigator: true).pop('dialog');
-                   Navigator.popAndPushNamed(context, Home.id);
+                   // Navigator.of(context, rootNavigator: true).pop('dialog');
+                   Navigator.popAndPushNamed(context, LoadingScreen.id);
                  })
                  .catchError((err) {
-                   Navigator.of(context, rootNavigator: true).pop('dialog');
+                   print(err.toString());
+                   // Navigator.of(context, rootNavigator: true).pop('dialog');
                    // Show error dialog
                    showDialog(
                      context: context,
@@ -152,7 +154,6 @@ class _LoginFormState extends State<LoginForm> {
                      },
                    );
                  });
-                 showLoadingDialogue(context);
                },
                child: Text("Login"),
                buttonColor: Colors.amber,

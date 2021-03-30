@@ -42,7 +42,19 @@ class _AccountEditState extends State<AccountEdit> {
       _shirtSize = khUser.shirtSize;
     } catch (e) {
       print(e.toString());
-      Navigator.pushNamed(context, Error.id);
+      showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Unable to load account info."),
+                actions: <Widget>[
+                  new FlatButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text("Close"))
+                ],
+              );
+            },
+          );
     }
   }
 
@@ -53,7 +65,6 @@ class _AccountEditState extends State<AccountEdit> {
   void _submitChanges(BuildContext context) async {
     final _firestore = Firestore.instance;
 
-    // need to change khUser.uid to the document id
     await _firestore
         .collection('user')
         .document(khUser.docId)
@@ -66,8 +77,34 @@ class _AccountEditState extends State<AccountEdit> {
           'zip': _zipController.text,
           'shirtSize': _shirtSize.displayName,
         })
-        .then((value) => Navigator.pop(context))
-        .catchError((error) => print(error.toString()));
+        .then((value) {
+          KnightHackUser updatedUser = new KnightHackUser(
+            fullName: _fullNameController.text,
+            street: _streetController.text,
+            apartment: _aptController.text,
+            city: _cityController.text,
+            state: _stateController.text,
+            zip: _zipController.text,
+            shirtSize: _shirtSize,
+          );
+          Navigator.pop(context, updatedUser);
+        })
+        .catchError((error) {
+          print(error.toString());
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Unable to update account info, try again later."),
+                actions: <Widget>[
+                  new FlatButton(
+                      onPressed: () => Navigator.of(context).pop(),
+                      child: Text("Close"))
+                ],
+              );
+            },
+          );
+        });
   }
 
   void _resetPassword(BuildContext context) async{
@@ -135,6 +172,7 @@ class _AccountEditState extends State<AccountEdit> {
                     SizedBox(width: 50,),
                     TShirtSelector(
                       onChange: onTShirtChange,
+                      value: khUser.shirtSize,
                     ),
                   ],
                 ),

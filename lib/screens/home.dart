@@ -1,4 +1,5 @@
 import 'package:add_2_calendar/add_2_calendar.dart';
+import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/utility/getEvents.dart';
 import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +10,20 @@ import 'package:club_app_2021/widgets/account_drawer.dart';
 class Home extends StatefulWidget {
   static const String id = "Home";
 
+
+  final KnightHackUser khUser;
+
+  Home({@required this.khUser});
+
   @override
-  _HomeState createState() => _HomeState();
+  _HomeState createState() => _HomeState(khUser: khUser);
 }
 
 class _HomeState extends State<Home> {
-  List<KHEvent> events = List<KHEvent>();
+   List<KHEvent> events = List<KHEvent>();
+  final KnightHackUser khUser;
+
+  _HomeState({@required this.khUser});
 
   @override
   void initState() {
@@ -26,13 +35,15 @@ class _HomeState extends State<Home> {
     });
     //events = allEvents.map((e) => new KHEvent.from(e)).toList();
     print(events);
+    print(khUser.summary());
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: titleBar,
-      drawer: AccountDrawer(),
+      drawer: AccountDrawer(khUser: khUser,),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
