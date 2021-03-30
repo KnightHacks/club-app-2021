@@ -134,12 +134,12 @@ class _LoginFormState extends State<LoginForm> {
              RoundedButton(
                onPressed: () {
                  _login(context).then((value) {
-                   Navigator.of(context, rootNavigator: true).pop('dialog');
+                   // Navigator.of(context, rootNavigator: true).pop('dialog');
                    Navigator.popAndPushNamed(context, LoadingScreen.id);
                  })
                  .catchError((err) {
                    print(err.toString());
-                   Navigator.of(context, rootNavigator: true).pop('dialog');
+                   // Navigator.of(context, rootNavigator: true).pop('dialog');
                    // Show error dialog
                    showDialog(
                      context: context,
