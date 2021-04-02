@@ -1,45 +1,42 @@
-import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
-import 'package:club_app_2021/screens/login.dart';
 
-class Confirm extends StatefulWidget {
+class Confirm extends StatelessWidget {
   static const id = "Confirm";
+  final String message;
+  final String destination;
 
-  @override
-  _ConfirmState createState() => _ConfirmState();
-}
+  Confirm({this.message, this.destination});
 
-class _ConfirmState extends State<Confirm> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: titleBar,
-      body: SafeArea(
-          child: Column(
-        children: [
-          Expanded(
-            child: Center(
-              child: Text(
-                "A  email has been sent!",
-                style: TextStyle(
-                  fontSize: 32.0,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: SafeArea(
+            child: Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: Text(
+                  message,
+                  style: TextStyle(
+                    fontSize: 32.0,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
-          ),
-          RoundedButton(
-            buttonColor: Colors.pinkAccent,
-            onPressed: () => {
-              Navigator.popAndPushNamed(context, Login.id),
-            },
-            child: Text(
-              "Okay!"
+            RoundedButton(
+              buttonColor: Colors.pinkAccent,
+              onPressed: () => {
+                Navigator.popAndPushNamed(context, destination),
+              },
+              child: Text("Okay!"),
             ),
-          ),
-        ],
-      )),
+          ],
+        )),
+      ),
     );
   }
 }

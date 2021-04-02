@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
+import 'package:club_app_2021/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
@@ -39,13 +40,14 @@ class _Register2State extends State<Register2> {
     if (value.isEmpty) {
       return "Please enter Email";
     }
-    if (!EmailValidator.validate(value) || !(value.contains(knightsEmail) || value.contains(ucfEmail))) {
+    if (!EmailValidator.validate(value) ||
+        !(value.contains(knightsEmail) || value.contains(ucfEmail))) {
       return "Please enter valid knights or UCF email";
     }
     return null;
   };
 
-  Object _passwordValidator(String value){
+  Object _passwordValidator(String value) {
     return _passwordController.text == value ? null : "Passwords don't match";
   }
 
@@ -65,26 +67,25 @@ class _Register2State extends State<Register2> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     TextFormField(
-                      //contains email
-                      decoration: InputDecoration(
-                          labelText: "Knights Or UCF Email", border: inputBorder),
-                      keyboardType: TextInputType.emailAddress,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      textAlign: TextAlign.center,
-                      validator: _validateEmail,
-                      controller: _emailController
-                    ),
+                        //contains email
+                        decoration: InputDecoration(
+                            labelText: "Knights Or UCF Email",
+                            border: inputBorder),
+                        keyboardType: TextInputType.emailAddress,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        textAlign: TextAlign.center,
+                        validator: _validateEmail,
+                        controller: _emailController),
                     SizedBox(height: 10),
 
                     // contains password
                     TextFormField(
-                      decoration: InputDecoration(
-                          labelText: "Password", border: inputBorder),
-                      obscureText: true,
-                      textAlign: TextAlign.center,
-                      controller: _passwordController
-                    ),
+                        decoration: InputDecoration(
+                            labelText: "Password", border: inputBorder),
+                        obscureText: true,
+                        textAlign: TextAlign.center,
+                        controller: _passwordController),
                     SizedBox(height: 10),
                     // contains confirmation of password
                     TextFormField(
@@ -100,13 +101,14 @@ class _Register2State extends State<Register2> {
                     // Creates button for Registration
                     RoundedButton(
                       child: Text("Register"),
-                      buttonColor: Color(0xFFb7517c),
+                      buttonColor: kGoldColor,
                       onPressed: () async {
                         print(_formKey);
                         if (_formKey.currentState.validate()) {
                           AuthResult res =
                               await _auth.createUserWithEmailAndPassword(
-                                  email: _emailController.text, password: _passwordController.text);
+                                  email: _emailController.text,
+                                  password: _passwordController.text);
                           FirebaseUser user = res.user;
                           _firestore.collection("user").add({
                             'fullName': _user.fullName,
@@ -126,9 +128,14 @@ class _Register2State extends State<Register2> {
                             print(e.message);
                           }
 
-                          Navigator.popAndPushNamed(context, Confirm.id);
-                        }
-                        else {
+                          //Navigator.popAndPushNamed(context, Confirm.id);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Confirm(
+                                      message: "An email has been sent.",
+                                      destination: Login.id)));
+                        } else {
                           print("Passwords don't match or enter knights email");
                         }
                       },
@@ -137,16 +144,13 @@ class _Register2State extends State<Register2> {
                     // Creates button for Going Back to Register 1
                     RoundedButton(
                       child: Text("Go Back"),
-                      buttonColor: Colors.amber,
-                      onPressed: () =>
-                          Navigator.pop(context),
+                      buttonColor: kPinkColor,
+                      onPressed: () => Navigator.pop(context),
                     ),
                     SizedBox(height: 20),
                   ],
-                )
-              ),
+                )),
           ),
-        )
-      );
-   }
+        ));
+  }
 }
