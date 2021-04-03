@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:club_app_2021/widgets/title_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:club_app_2021/model/FAQListItem.dart';

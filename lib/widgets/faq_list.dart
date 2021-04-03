@@ -43,7 +43,7 @@ class _FAQListState extends State<FAQList> {
                     ),
                     headerBuilder: (BuildContext context, bool isExpanded) {
                       return ListTile(
-                        leading: Icon(Icons.question_answer_outlined, color: Colors.black,),
+                        leading: Icon(Icons.question_answer_outlined, color: kIconColor,),
                         title: Text(item.question, style: kGeneralTextStyle),
                       );
                     },
