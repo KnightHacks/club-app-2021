@@ -22,6 +22,6 @@ class KHEvent {
   }
 
   String toString() {
-    return title + " " + presenter;
+    return title + " with " + presenter;
   }
 }
