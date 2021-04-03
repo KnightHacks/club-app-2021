@@ -1,4 +1,4 @@
-// TODO: Add tab switcher for event page and FAW
+// TODO: Add tab switcher for event page and FAQ
 // TODO: Add display message for if no events are scheduled
 // TODO: Display presenter and event time in card
 // TODO: Change app icon and label

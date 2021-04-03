@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
+// TODO: REVERT THIS URL TO THE ORIGINAL ONE
 const eventsURL =
-    "https://api.knighthacks.org/api/club/get_events/?rdate=NextWeek";
+    "https://api.knighthacks.org/api/club/get_events/?count=5&confirmed=true";
 
 String knightsEmail = "@knights.ucf.edu";
 String ucfEmail = "@ucf.edu";
