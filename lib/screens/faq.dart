@@ -31,12 +31,6 @@ class _FAQState extends State<FAQ> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: titleBar,
-
-      body: SafeArea(
-        child: FAQList(key: UniqueKey(), items: _items),
-      ),
-    );
+    return FAQList(key: UniqueKey(), items: _items);
   }
 }
