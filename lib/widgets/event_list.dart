@@ -25,6 +25,25 @@ class _EventListState extends State<EventList> {
     });
   }
 
+  /// Converting DateTime to date and 12 hour time string.
+  String dateToString(DateTime dateTime) {
+    String res = "";
+
+    if (dateTime == null)
+      return "Time missing";
+
+    String amPm = dateTime.hour + 1 >= 12 ? "PM" : "AM";
+    int hour12 = dateTime.hour % 12; // converts hour from 24 hour clock to 12
+    String hourStr = hour12 == 0 ? "12" : hour12.toString();
+    String minute = dateTime.minute == 0 ? dateTime.minute.toString() + "0" : dateTime.minute.toString();
+
+    res += dateTime.month.toString() + "/"; // getting month
+    res += dateTime.day.toString() + "/"; // getting day
+    res += dateTime.year.toString() + " at "; // getting year
+    res += hourStr + ":" + minute + " " + amPm;
+    return res;
+  }
+
   @override
   Widget build(BuildContext context) {
     if (events == null) {
@@ -54,6 +73,7 @@ class _EventListState extends State<EventList> {
                       headerBuilder: (BuildContext context, bool isExpanded) {
                         return ListTile(
                           title: Text(e.title, style: kCardTitleStyle),
+                          subtitle: Text("Presented by " + e.presenter, style: kGeneralTextStyle),
                         );
                       },
                       body: Container(
@@ -62,6 +82,7 @@ class _EventListState extends State<EventList> {
                         child: Column(
                           children: <Widget>[
                             Text(e.description, style: kCardDescriptionStyle),
+                            Text(dateToString(e.dateTime)),
                             SizedBox(height: 20),
                             FlatButton.icon(
                                 color: Theme.of(context).accentColor,
