@@ -1,5 +1,3 @@
-// TODO: Change app icon and label
-
 import 'package:club_app_2021/screens/loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/screens/login.dart';
