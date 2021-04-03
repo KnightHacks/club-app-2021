@@ -1,4 +1,3 @@
-// TODO: Display presenter and event time in card
 // TODO: Change app icon and label
 
 import 'package:club_app_2021/screens/loading_screen.dart';

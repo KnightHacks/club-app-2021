@@ -54,7 +54,7 @@ class _EventListState extends State<EventList> {
       );
     } else if (events.isEmpty) {
       // No events returned from request.
-      return Center(child: Text("Events coming soon !"));
+      return Center(child: Text("Events coming soon !", style: kCardTitleStyle,));
     } else {
       // Got events back.
       return ListView(
