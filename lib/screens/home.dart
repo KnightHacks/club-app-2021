@@ -1,3 +1,4 @@
+import 'package:club_app_2021/constants.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/screens/faq.dart';
 import 'package:club_app_2021/utility/getEvents.dart';
@@ -53,6 +54,7 @@ class _HomeState extends State<Home> {
             width: 150,
           ),
           bottom: TabBar(
+            indicatorColor: kGoldColor,
             tabs: [
               Tab(icon: Icon(Icons.event),),
               Tab(icon: Icon(Icons.question_answer),)
