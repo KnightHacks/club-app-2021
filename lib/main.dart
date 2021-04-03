@@ -1,3 +1,8 @@
+// TODO: Add tab switcher for event page and FAW
+// TODO: Add display message for if no events are scheduled
+// TODO: Display presenter and event time in card
+// TODO: Change app icon and label
+
 import 'package:club_app_2021/screens/loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/screens/login.dart';
