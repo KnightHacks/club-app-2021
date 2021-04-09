@@ -1,5 +1,4 @@
 import 'package:club_app_2021/model/ShirtSize.dart';
-import 'package:flutter/material.dart';
 
 class KnightHackUser {
 

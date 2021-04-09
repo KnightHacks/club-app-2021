@@ -9,9 +9,9 @@ class AccountWrapper extends InheritedWidget{
 
   static AccountWrapper of (BuildContext context){
 
-    final AccountWrapper result = context.dependOnInheritedWidgetOfExactType<AccountWrapper>()!;
+    final AccountWrapper? result = context.dependOnInheritedWidgetOfExactType<AccountWrapper>();
     assert(result != null, 'No AccountWrapper found in context.');
-    return result;
+    return result!;
   }
 
   @override
