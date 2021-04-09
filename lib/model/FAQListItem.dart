@@ -1,12 +1,9 @@
 class FAQListItem {
-  String question;
-  String answer;
+  late final String question;
+  late final String answer;
   bool isExpanded = false;
 
-  FAQListItem(String title, String description) {
-    this.question = title;
-    this.answer = description;
-  }
+  FAQListItem({required this.question, required this.answer});
 
   /// Converts JSON Map into a ListItem
   FAQListItem.fromJson(Map<String, dynamic> json) {

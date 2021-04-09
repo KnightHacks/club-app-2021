@@ -21,7 +21,7 @@ class _FAQState extends State<FAQ> {
     rootBundle.loadString("assets/faqs.json")
     .then((value) => json.decode(value))
     .then((values) {
-      List<FAQListItem> list = new List();
+      List<FAQListItem> list = [];
       values.forEach((value) => list.add(FAQListItem.fromJson(value)));
       return list;
     })

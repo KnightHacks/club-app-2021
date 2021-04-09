@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 
 class AccountView extends StatefulWidget {
   static const String id = "AccountView";
-  final KnightHackUser kh;
+  final KnightHackUser? kh;
 
   AccountView({this.kh});
 
   @override
-  _AccountViewState createState() => _AccountViewState();
+  _AccountViewState createState() => _AccountViewState(kh: this.kh);
 }
 
 class _AccountViewState extends State<AccountView> {
 
-  KnightHackUser kh;
+  KnightHackUser? kh;
 
   _AccountViewState({this.kh});
 

@@ -1,11 +1,11 @@
 import 'package:club_app_2021/model/ShirtSize.dart';
 import 'package:flutter/material.dart';
 
-class KnightHackUser extends InheritedWidget {
+class KnightHackUser {
 
-  final String uid;
-  final String docId;
-  final String email;
+  late final String uid;
+  late final String docId;
+  late final String email;
   final String fullName;
   final String street;
   final String apartment;
@@ -15,29 +15,14 @@ class KnightHackUser extends InheritedWidget {
   final ShirtSize shirtSize;
 
   KnightHackUser({
-    this.uid,
-    this.docId,
-    this.email,
-    this.fullName,
-    this.street,
-    this.apartment,
-    this.city,
-    this.state,
-    this.zip,
-    this.shirtSize
+    required this.fullName,
+    required this.street,
+    required this.apartment,
+    required this.city,
+    required this.state,
+    required this.zip,
+    required this.shirtSize,
   });
-
-  static KnightHackUser of(BuildContext context) {
-    final KnightHackUser result = context
-        .dependOnInheritedWidgetOfExactType<KnightHackUser>();
-    assert(result != null, "Could not fetch user from context!");
-    return result;
-  }
-
-  @override
-  bool updateShouldNotify(KnightHackUser oldUser) {
-    return fullName != oldUser.fullName;
-  }
 
   String summary() {
     try{

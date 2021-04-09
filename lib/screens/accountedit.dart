@@ -26,11 +26,11 @@ class _AccountEditState extends State<AccountEdit> {
   final _stateController = TextEditingController();
   final _zipController = TextEditingController();
   ShirtSize _shirtSize = ShirtSize.M;
-  KnightHackUser khUser;
+  late KnightHackUser khUser;
 
   void _presetText() {
     try {
-      final Prop prop = ModalRoute.of(context).settings.arguments;
+      final Prop prop = ModalRoute.of(context)!.settings.arguments as Prop;
       khUser = prop.knightHackUser;
 
       _fullNameController.text = khUser.fullName;
@@ -48,7 +48,7 @@ class _AccountEditState extends State<AccountEdit> {
               return AlertDialog(
                 title: Text("Unable to load account info."),
                 actions: <Widget>[
-                  new FlatButton(
+                  new TextButton(
                       onPressed: () => Navigator.of(context).pop(),
                       child: Text("Close"))
                 ],
@@ -58,17 +58,17 @@ class _AccountEditState extends State<AccountEdit> {
     }
   }
 
-  void onTShirtChange(ShirtSize value) {
-    _shirtSize = value;
+  void onTShirtChange(ShirtSize? value) {
+    _shirtSize = value!;
   }
 
   void _submitChanges(BuildContext context) async {
-    final _firestore = Firestore.instance;
+    final _firestore = FirebaseFirestore.instance;
 
     await _firestore
         .collection('user')
-        .document(khUser.docId)
-        .updateData({
+        .doc(khUser.docId)
+        .update({
           'fullName': _fullNameController.text,
           'street': _streetController.text,
           'apartment': _aptController.text,
@@ -97,7 +97,7 @@ class _AccountEditState extends State<AccountEdit> {
               return AlertDialog(
                 title: Text("Unable to update account info, try again later."),
                 actions: <Widget>[
-                  new FlatButton(
+                  new TextButton(
                       onPressed: () => Navigator.of(context).pop(),
                       child: Text("Close"))
                 ],

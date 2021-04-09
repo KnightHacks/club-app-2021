@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class TShirtSelector extends StatefulWidget {
 
-  final Function(ShirtSize) onChange;
+  final Function(ShirtSize?) onChange;
   final ShirtSize value;
 
   TShirtSelector({
-    this.onChange,
+    required this.onChange,
     this.value = ShirtSize.M,
   });
 
@@ -18,13 +18,13 @@ class TShirtSelector extends StatefulWidget {
 class _TShirtSelectorState extends State<TShirtSelector> {
 
   ShirtSize currentValue;
-  Function(ShirtSize) changeHandler;
+  Function(ShirtSize?) changeHandler;
 
-  _TShirtSelectorState({this.currentValue, this.changeHandler});
+  _TShirtSelectorState({required this.currentValue, required this.changeHandler});
 
-  void onChanged(ShirtSize value) {
+  void onChanged(ShirtSize? value) {
     setState(() {
-      this.currentValue = value;
+      this.currentValue = value!;
     });
 
     // Forward handler.

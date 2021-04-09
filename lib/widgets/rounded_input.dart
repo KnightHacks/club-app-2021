@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class RoundedTextInput extends StatelessWidget {
 
   final bool autocorrect;
-  final FormFieldValidator<String> validator;
-  final TextEditingController controller;
-  final TextInputType keyboardType;
-  final String labelText;
+  final FormFieldValidator<String>? validator;
+  final TextEditingController? controller;
+  final TextInputType? keyboardType;
+  final String? labelText;
   final bool obscureText;
 
   RoundedTextInput({

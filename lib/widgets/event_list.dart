@@ -12,7 +12,7 @@ class EventList extends StatefulWidget {
 }
 
 class _EventListState extends State<EventList> {
-  List<KHEvent> events;
+  List<KHEvent> events = [];
 
   @override
   void initState() {
@@ -73,7 +73,7 @@ class _EventListState extends State<EventList> {
                       headerBuilder: (BuildContext context, bool isExpanded) {
                         return ListTile(
                           title: Text(e.title, style: kCardTitleStyle),
-                          subtitle: Text("Presented by " + e.presenter, style: kGeneralTextStyle),
+                          subtitle: Text(e.presenter != null ? "Presented by " + e.presenter! : "No Presenter", style: kGeneralTextStyle),
                         );
                       },
                       body: Container(
@@ -81,25 +81,29 @@ class _EventListState extends State<EventList> {
                         padding: EdgeInsets.all(10),
                         child: Column(
                           children: <Widget>[
-                            Text(e.description, style: kCardDescriptionStyle),
+                            Text(e.description ?? "", style: kCardDescriptionStyle),
                             Text(dateToString(e.dateTime)),
                             SizedBox(height: 20),
-                            FlatButton.icon(
-                                color: Theme.of(context).accentColor,
-                                onPressed: () {
-                                  final Event event = Event(
-                                    title: e.title,
-                                    description: e.description,
-                                    startDate: e.dateTime,
-                                    endDate: e.dateTime,
-                                  );
-                                  Add2Calendar.addEvent2Cal(event);
-                                },
-                                icon: Icon(Icons.calendar_today_outlined),
-                                label: Text(
-                                  'Add to Calendar',
-                                  style: kAddToCalStyle,
-                                )),
+                            TextButton.icon(
+                              onPressed: () {
+                                final Event event = Event(
+                                  title: e.title,
+                                  description: e.description ?? "",
+                                  startDate: e.dateTime,
+                                  endDate: e.dateTime,
+                                );
+                                Add2Calendar.addEvent2Cal(event);
+                              },
+                              icon: Icon(Icons.calendar_today_outlined),
+                              label: Text(
+                                'Add to Calendar',
+                                style: kAddToCalStyle,
+                              ),
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                                backgroundColor: MaterialStateProperty.all<Color>(Theme.of(context).accentColor),
+                              ),
+                            ),
                           ],
                         ),
                       ),

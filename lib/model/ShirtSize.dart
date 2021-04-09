@@ -16,5 +16,5 @@ extension ShirtVal on ShirtSize {
     ShirtSize.XXL: "XXL",
   };
 
-  String get displayName => displayMap[this];
+  String get displayName => displayMap[this]!;
 }

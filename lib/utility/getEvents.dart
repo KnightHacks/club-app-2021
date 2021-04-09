@@ -4,7 +4,7 @@ import "package:club_app_2021/constants.dart";
 import 'dart:convert';
 
 Future<List<KHEvent>> getEvents() async {
-  http.Response response = await http.get(eventsURL);
+  http.Response response = await http.get(Uri.parse(eventsURL));
 
   String data = response.body;
   Iterable decoded = jsonDecode(data)["events"];
