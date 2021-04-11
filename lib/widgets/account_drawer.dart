@@ -9,7 +9,7 @@ import 'package:club_app_2021/model/KnightHacksUser.dart';
 class AccountDrawer extends StatefulWidget {
   final KnightHackUser khUser;  
 
-  AccountDrawer({@required this.khUser});
+  AccountDrawer({required this.khUser});
 
   @override
   _AccountDrawerState createState() => _AccountDrawerState(khUser: khUser);
@@ -20,7 +20,7 @@ class _AccountDrawerState extends State<AccountDrawer> {
   final _auth = FirebaseAuth.instance;
   KnightHackUser khUser;
 
-  _AccountDrawerState({@required this.khUser});
+  _AccountDrawerState({required this.khUser});
 
   void _goToEdit(BuildContext context) async{
     dynamic returnedInfo;
@@ -57,34 +57,38 @@ class _AccountDrawerState extends State<AccountDrawer> {
               ),
             ),
             ListTile(
-              title: Text(khUser.fullName ?? "Knightro"),
+              title: Text(khUser.fullName),
               leading: Icon(Icons.account_circle),
             ),
             ListTile(
-              title: Text(khUser.email ?? "email@email.com"),
+              title: Text(khUser.email),
               leading: Icon(Icons.email),
             ),
             ListTile(
-              title: Text(khUser.street + (khUser.apartment.isEmpty ? "" : "\n " + khUser.apartment) ?? "123 Street St."),
+              title: Text(khUser.street + (khUser.apartment.isEmpty ? "" : "\n " + khUser.apartment)),
               leading: Icon(Icons.home),
             ),
             ListTile(
-              title: Text(khUser.city + ", " + khUser.state + ", " + khUser.zip ?? "No City Listed"),
+              title: Text(khUser.city + ", " + khUser.state + ", " + khUser.zip),
               leading: Icon(Icons.location_city),
             ),
             ListTile(
-              title: Text("Shirt size: " + khUser.shirtSize.displayName ?? "No Shirt Size Listed"),
+              title: Text("Shirt size: " + khUser.shirtSize.displayName),
               
             ),
-            FlatButton(
+            TextButton(
               onPressed: () => _goToEdit(context),
               child: Text("Edit"),
-              color: Color(0xFF36328B),
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF36328B)),
+              ),
             ),
-            FlatButton(
+            TextButton(
                 onPressed: () => logout(context),
                 child: Text("Logout", textAlign: TextAlign.left),
-                color: Color(0xFF36328B)
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF36328B)),
+                ),
             )
           ],
         ),

@@ -20,7 +20,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   /// Turns string returned from firestore into a ShirtSize so it can be stored
   /// in KhUser object and passed.
   ShirtSize stringToShirtSize(String size) {
-    ShirtSize res;
+    ShirtSize? res;
     try {
       switch (size) {
         case "S":
@@ -50,7 +50,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     } catch (e) {
       print(e.toString());
     }
-    return res;
+    return res!;
   }
 
   /// Creates KnightHackUser object for signed in user.
@@ -67,26 +67,23 @@ class _LoadingScreenState extends State<LoadingScreen> {
   /// able to use arguments passed from the previous page.
   Future<KnightHackUser> _getUser() async {
     Map<String, dynamic> data;
-    KnightHackUser _khUser;
+    KnightHackUser? _khUser;
     try {
-      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      User user = FirebaseAuth.instance.currentUser!;
 
       String id = user.uid;
-      final _firestore = Firestore.instance;
+      final _firestore = FirebaseFirestore.instance;
 
       await _firestore
           .collection('user')
           .where('uid', isEqualTo: id)
-          .getDocuments()
+          .get()
           .then((value) {
         // always returns an array of documents
         // casting it as a Map
-        data = value.documents[0].data;
+        data = value.docs[0].data();
 
         _khUser = new KnightHackUser(
-          uid: data["uid"].toString(),
-          docId: value.documents[0].documentID,
-          email: user.email,
           fullName: data["fullName"].toString(),
           street: data["street"].toString(),
           apartment: data["apartment"].toString(),
@@ -95,12 +92,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
           zip: data["zip"].toString(),
           shirtSize: stringToShirtSize(data["shirtSize"].toString()),
         );
+
+        _khUser!.uid = data["uid"].toString();
+        _khUser!.docId = value.docs[0].id;
+        _khUser!.email = user.email!;
       });
       //print(_khUser.summary());
     } catch (e) {
       print(e.toString());
     }
-    return _khUser;
+    return _khUser!;
   }
 
   void getInfo() async {

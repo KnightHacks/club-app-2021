@@ -3,8 +3,8 @@ import 'package:club_app_2021/widgets/rounded_button.dart';
 
 class Confirm extends StatelessWidget {
   static const id = "Confirm";
-  final String message;
-  final String destination;
+  final String? message;
+  final String? destination;
 
   Confirm({this.message, this.destination});
 
@@ -19,7 +19,7 @@ class Confirm extends StatelessWidget {
             Expanded(
               child: Center(
                 child: Text(
-                  message,
+                  message ?? "",
                   style: TextStyle(
                     fontSize: 32.0,
                   ),
@@ -30,7 +30,7 @@ class Confirm extends StatelessWidget {
             RoundedButton(
               buttonColor: Colors.pinkAccent,
               onPressed: () => {
-                Navigator.popAndPushNamed(context, destination),
+                Navigator.popAndPushNamed(context, destination ?? ""),
               },
               child: Text("Okay!"),
             ),

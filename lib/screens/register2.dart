@@ -13,7 +13,7 @@ import '../model/ShirtSize.dart';
 class Register2 extends StatefulWidget {
   static const String id = "Register2";
 
-  final KnightHackUser user;
+  final KnightHackUser? user;
 
   Register2({this.user});
 
@@ -23,31 +23,31 @@ class Register2 extends StatefulWidget {
 
 class _Register2State extends State<Register2> {
   FirebaseAuth _auth = FirebaseAuth.instance;
-  final _firestore = Firestore.instance;
+  final _firestore = FirebaseFirestore.instance;
 
-  KnightHackUser _user;
+  late KnightHackUser? _user;
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
-  _Register2State(KnightHackUser user) {
+  _Register2State(KnightHackUser? user) {
     this._user = user;
   }
 
-  final String Function(String) _validateEmail = (String value) {
-    if (value.isEmpty) {
+  final String? Function(String?) _validateEmail = (String? value) {
+    if (value != null && value.isEmpty) {
       return "Please enter Email";
     }
-    if (!EmailValidator.validate(value) ||
+    if (!EmailValidator.validate(value!) ||
         !(value.contains(knightsEmail) || value.contains(ucfEmail))) {
       return "Please enter valid knights or UCF email";
     }
     return null;
   };
 
-  Object _passwordValidator(String value) {
+  String? _passwordValidator(String? value) {
     return _passwordController.text == value ? null : "Passwords don't match";
   }
 
@@ -104,28 +104,28 @@ class _Register2State extends State<Register2> {
                       buttonColor: kGoldColor,
                       onPressed: () async {
                         print(_formKey);
-                        if (_formKey.currentState.validate()) {
-                          AuthResult res =
+                        if (_formKey.currentState!.validate()) {
+                          UserCredential res =
                               await _auth.createUserWithEmailAndPassword(
                                   email: _emailController.text,
                                   password: _passwordController.text);
-                          FirebaseUser user = res.user;
+                          User user = res.user!;
                           _firestore.collection("user").add({
-                            'fullName': _user.fullName,
+                            'fullName': _user!.fullName,
                             'uid': user.uid,
-                            'street': _user.street,
-                            'apartment': _user.apartment,
-                            'city': _user.city,
-                            'state': _user.state,
-                            'zip': _user.zip,
-                            'shirtSize': _user.shirtSize.displayName,
+                            'street': _user!.street,
+                            'apartment': _user!.apartment,
+                            'city': _user!.city,
+                            'state': _user!.state,
+                            'zip': _user!.zip,
+                            'shirtSize': _user!.shirtSize.displayName,
                           });
                           try {
                             await user.sendEmailVerification();
                           } catch (e) {
                             print(
                                 "Something went wrong while sending your email verification.");
-                            print(e.message);
+                            print(e.toString());
                           }
 
                           //Navigator.popAndPushNamed(context, Confirm.id);

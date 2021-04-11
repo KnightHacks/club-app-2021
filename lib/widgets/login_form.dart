@@ -19,12 +19,12 @@ class _LoginFormState extends State<LoginForm> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  final String Function(String) _validatePassword = (String value) {
-    return value.isEmpty ? "Please enter password" : null;
+  final String? Function(String?) _validatePassword = (String? value) {
+    return value!.isEmpty ? "Please enter password" : null;
   };
 
-  final String Function(String) _validateEmail = (String value) {
-    if (value.isEmpty) {
+  final String? Function(String?) _validateEmail = (String? value) {
+    if (value!.isEmpty) {
       return "Please enter Email";
     }
     if (!EmailValidator.validate(value) && (value.contains(knightsEmail) || value.contains(ucfEmail))) {
@@ -34,7 +34,7 @@ class _LoginFormState extends State<LoginForm> {
   };
 
   Future<void> _login(BuildContext context) async {
-    if (!_formKey.currentState.validate()) {
+    if (!_formKey.currentState!.validate()) {
       throw new Error();
     }
 
@@ -43,13 +43,13 @@ class _LoginFormState extends State<LoginForm> {
 
     try {
       // Try to sign user in.
-      AuthResult res = await FirebaseAuth.instance
+      UserCredential res = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
 
       // Grabbing user info and putting in KhUser object.
-      FirebaseUser user = res.user;
+      User user = res.user!;
      
-        if (user.isEmailVerified) {
+        if (user.emailVerified) {
           Navigator.popAndPushNamed(context, LoadingScreen.id);
         } else {
           showDialog(
@@ -58,7 +58,7 @@ class _LoginFormState extends State<LoginForm> {
               return AlertDialog(
                 title: Text("Please check email for verification link"),
                 actions: <Widget>[
-                  new FlatButton(
+                  new TextButton(
                       onPressed: () => Navigator.of(context).pop(),
                       child: Text("Close"))
                 ],
@@ -147,7 +147,7 @@ class _LoginFormState extends State<LoginForm> {
                        return AlertDialog(
                          title: Text("Could not login"),
                          actions: <Widget>[
-                           new FlatButton(onPressed: () => Navigator.of(context).pop(),
+                           new TextButton(onPressed: () => Navigator.of(context).pop(),
                                child: Text("Close"))
                          ],
                        );

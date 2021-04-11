@@ -17,17 +17,17 @@ class Home extends StatefulWidget {
 
   final KnightHackUser khUser;
 
-  Home({@required this.khUser});
+  Home({required this.khUser});
 
   @override
   _HomeState createState() => _HomeState(khUser: khUser);
 }
 
 class _HomeState extends State<Home> {
-  List<KHEvent> events = List<KHEvent>();
+  List<KHEvent> events = [];
   KnightHackUser khUser;
 
-  _HomeState({@required this.khUser});
+  _HomeState({required this.khUser});
 
   @override
   void initState() {

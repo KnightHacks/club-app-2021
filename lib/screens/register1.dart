@@ -27,19 +27,19 @@ class _Register1State extends State<Register1> {
   final _zipController = TextEditingController();
   ShirtSize _shirtSize = ShirtSize.M;
 
-  KnightHackUser _user;
+  late KnightHackUser _user;
 
 
-  String _validate(String value) {
-    if (value.isEmpty) {
+  String? _validate(String? value) {
+    if (value != null && value.isEmpty) {
       return "Please fill out this field.";
     }
 
     return null;
   }
 
-  void onTShirtChange(ShirtSize value) {
-    this._shirtSize = value;
+  void onTShirtChange(ShirtSize? value) {
+    this._shirtSize = value!;
   }
 
   @override
@@ -105,7 +105,7 @@ class _Register1State extends State<Register1> {
                     child: Text("Continue"),
                     onPressed: () {
                       // Validate inputs
-                      _formKey.currentState.validate();
+                      _formKey.currentState!.validate();
                       _user = KnightHackUser(
                         fullName: _fullNameController.text,
                         street: _streetController.text,

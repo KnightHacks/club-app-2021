@@ -5,7 +5,7 @@ import 'package:club_app_2021/constants.dart';
 class FAQList extends StatefulWidget {
   final List<FAQListItem> items;
 
-  FAQList({Key key, this.items}) : super(key: key);
+  FAQList({Key? key, required this.items}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _FAQListState(items);
@@ -13,7 +13,7 @@ class FAQList extends StatefulWidget {
 
 // Handles state changes for the items.
 class _FAQListState extends State<FAQList> {
-  List<FAQListItem> _items;
+  List<FAQListItem> _items = [];
 
   _FAQListState(List<FAQListItem> items) {
     this._items = items;

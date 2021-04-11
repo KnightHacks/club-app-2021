@@ -1,17 +1,17 @@
 class KHEvent {
-  String title;
-  String description;
-  String location;
-  DateTime dateTime;
-  String presenter;
+  late final String title;
+  late final String? description;
+  late final String location;
+  late final DateTime dateTime;
+  late final String? presenter;
   bool isExpanded = false;
 
   KHEvent(
-      {this.title,
-      this.description,
-      this.location,
-      this.dateTime,
-      this.presenter});
+      {required this.title,
+      required this.description,
+      required this.location,
+      required this.dateTime,
+      required this.presenter});
 
   KHEvent.from(Map<String, dynamic> map) {
     title = map["name"];
@@ -22,6 +22,6 @@ class KHEvent {
   }
 
   String toString() {
-    return title + " with " + presenter;
+    return title + " with " + (presenter ?? "NA");
   }
 }

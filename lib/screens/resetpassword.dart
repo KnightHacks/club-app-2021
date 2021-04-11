@@ -13,7 +13,7 @@ class _ResetPassword extends State<ResetPassword> {
   final inputBorder =
       OutlineInputBorder(borderRadius: BorderRadius.circular(30));
   FirebaseAuth _auth = FirebaseAuth.instance;
-  String email;
+  late String email;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,7 @@ class _ResetPassword extends State<ResetPassword> {
                        return AlertDialog(
                          title: Text("Check your email for a reset link."),
                          actions: <Widget>[
-                           new FlatButton(onPressed: () => Navigator.of(context).pop(),
+                           new TextButton(onPressed: () => Navigator.of(context).pop(),
                                child: Text("Close"))
                          ],
                        );
