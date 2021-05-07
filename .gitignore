@@ -41,5 +41,5 @@ app.*.symbols
 app.*.map.json
 
 # Google Services related
-google-services.json
-GoogleService-Info.plist
+/android/app/google-services.json
+/ios/Runner/GoogleService-Info.plist
