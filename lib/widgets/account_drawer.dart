@@ -80,14 +80,14 @@ class _AccountDrawerState extends State<AccountDrawer> {
               onPressed: () => _goToEdit(context),
               child: Text("Edit"),
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF36328B)),
+                backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF1A1843)),
               ),
             ),
             TextButton(
                 onPressed: () => logout(context),
                 child: Text("Logout", textAlign: TextAlign.left),
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF36328B)),
+                  backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF1A1843)),
                 ),
             )
           ],
