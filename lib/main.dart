@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       // Once complete, show your application
       if (snapshot.connectionState == ConnectionState.done) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           theme: ThemeData.dark().copyWith(
             primaryColor: Color(0xFF1A1843),
             scaffoldBackgroundColor: Color(0xFF1A1843),
