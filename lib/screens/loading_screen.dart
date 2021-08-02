@@ -97,7 +97,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
         _khUser!.docId = value.docs[0].id;
         _khUser!.email = user.email!;
       });
-      //print(_khUser.summary());
+      // print(_khUser!.summary());
     } catch (e) {
       print(e.toString());
     }

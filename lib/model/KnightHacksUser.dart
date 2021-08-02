@@ -4,7 +4,7 @@ class KnightHackUser {
 
   late final String uid;
   late final String docId;
-  late final String email;
+  late String email;
   final String fullName;
   final String street;
   final String apartment;
@@ -21,6 +21,7 @@ class KnightHackUser {
     required this.state,
     required this.zip,
     required this.shirtSize,
+    this.email = "",
   });
 
   String summary() {
