@@ -83,6 +83,7 @@ class _Register2State extends State<Register2> {
                         decoration: InputDecoration(
                             labelText: "Password", border: inputBorder),
                         obscureText: true,
+                        autocorrect: false,
                         controller: _passwordController),
                     SizedBox(height: 10),
                     // contains confirmation of password
@@ -90,6 +91,7 @@ class _Register2State extends State<Register2> {
                       decoration: InputDecoration(
                           labelText: "Confirm Password", border: inputBorder),
                       obscureText: true,
+                      autocorrect: false,
                       validator: (value) {
                         return _passwordValidator(value);
                       },
