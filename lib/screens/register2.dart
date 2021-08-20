@@ -74,7 +74,6 @@ class _Register2State extends State<Register2> {
                         keyboardType: TextInputType.emailAddress,
                         enableSuggestions: false,
                         autocorrect: false,
-                        textAlign: TextAlign.center,
                         validator: _validateEmail,
                         controller: _emailController),
                     SizedBox(height: 10),
@@ -84,7 +83,6 @@ class _Register2State extends State<Register2> {
                         decoration: InputDecoration(
                             labelText: "Password", border: inputBorder),
                         obscureText: true,
-                        textAlign: TextAlign.center,
                         controller: _passwordController),
                     SizedBox(height: 10),
                     // contains confirmation of password
@@ -92,7 +90,6 @@ class _Register2State extends State<Register2> {
                       decoration: InputDecoration(
                           labelText: "Confirm Password", border: inputBorder),
                       obscureText: true,
-                      textAlign: TextAlign.center,
                       validator: (value) {
                         return _passwordValidator(value);
                       },

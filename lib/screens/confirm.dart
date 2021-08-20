@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:club_app_2021/constants.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 
 class Confirm extends StatelessWidget {
@@ -28,7 +29,7 @@ class Confirm extends StatelessWidget {
               ),
             ),
             RoundedButton(
-              buttonColor: Colors.pinkAccent,
+              buttonColor: kPinkColor,
               onPressed: () => {
                 Navigator.popAndPushNamed(context, destination ?? ""),
               },
