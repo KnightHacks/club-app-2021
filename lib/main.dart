@@ -11,10 +11,14 @@ import 'package:club_app_2021/screens/faq.dart';
 import 'package:club_app_2021/screens/confirm.dart';
 import 'package:club_app_2021/screens/resetpassword.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
-Future main() async {
+Future<void> main() async {
   await dotenv.load(fileName: ".env");
-  runApp(MyApp());
+  await SentryFlutter.init(
+    (options) => options.dsn = dotenv.env['SENTRY_DSN'],
+    appRunner: () => runApp(MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
