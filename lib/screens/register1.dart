@@ -81,7 +81,7 @@ class _Register1State extends State<Register1> {
                   SizedBox(height: 20),
                   RoundedTextInput(
                     validator: _validate,
-                    labelText: "State",
+                    labelText: "State (Initials)",
                     controller: _stateController,
                   ),
                   SizedBox(height: 20),

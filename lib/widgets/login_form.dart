@@ -129,6 +129,7 @@ class _LoginFormState extends State<LoginForm> {
                controller: _passwordController,
                labelText: "Password",
                obscureText: true,
+               autocorrect: false,
              ),
              SizedBox(height: 20),
              RoundedButton(

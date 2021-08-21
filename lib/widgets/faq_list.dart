@@ -25,6 +25,7 @@ class _FAQListState extends State<FAQList> {
         child: ListView(
           children: [
             ExpansionPanelList(
+              expandedHeaderPadding: EdgeInsets.all(0),
               expansionCallback: (int index, bool isExpanded) {
                 setState(() {
                   // Toggle state on the callback

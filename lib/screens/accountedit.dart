@@ -86,7 +86,9 @@ class _AccountEditState extends State<AccountEdit> {
             state: _stateController.text,
             zip: _zipController.text,
             shirtSize: _shirtSize,
+            email: khUser.email,
           );
+          print(updatedUser.summary());
           Navigator.pop(context, updatedUser);
         })
         .catchError((error) {
