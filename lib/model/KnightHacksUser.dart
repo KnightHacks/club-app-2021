@@ -1,5 +1,4 @@
 import 'package:club_app_2021/model/ShirtSize.dart';
-import 'package:sentry/sentry.dart';
 
 class KnightHackUser {
 
@@ -25,16 +24,11 @@ class KnightHackUser {
     this.email = "",
   });
 
-  Future<String> summary() async {
+  String summary() {
     try{
       return "Name: " + fullName + ", email: " + email + ", address: " + street + " " + apartment + " " + city + " " + state + " " + zip + 
       ", shirt size: " + shirtSize.displayName;
-    } catch (exception, stackTrace){
-      await Sentry.captureException(
-        exception,
-        stackTrace: stackTrace,
-      );
-
+    } catch (e){
       return "Some field was null";
     }
   }

@@ -60,11 +60,12 @@ class _ResetPassword extends State<ResetPassword> {
                      },
                    );
                     } catch (exception, stacktrace) {
-                      Navigator.pushNamed(context, Error.id);
                       await Sentry.captureException(
                         exception,
                         stackTrace: stacktrace
                       );
+                      
+                      Navigator.pushNamed(context, Error.id);
                     }
                   },
                   buttonColor: Colors.amber,

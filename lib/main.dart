@@ -16,7 +16,10 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
   await SentryFlutter.init(
-    (options) => options.dsn = dotenv.env['SENTRY_DSN'],
+    (options) => {
+      options.dsn = dotenv.env['SENTRY_DSN'],
+      options.enableOutOfMemoryTracking = false
+    },
     appRunner: () => runApp(MyApp()),
   );
 }

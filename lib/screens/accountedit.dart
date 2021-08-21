@@ -42,6 +42,11 @@ class _AccountEditState extends State<AccountEdit> {
       _zipController.text = khUser.zip;
       _shirtSize = khUser.shirtSize;
     } catch (exception, stacktrace) {
+      await Sentry.captureException(
+        exception,
+        stackTrace: stacktrace,
+      );
+      
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -54,11 +59,6 @@ class _AccountEditState extends State<AccountEdit> {
             ],
           );
         },
-      );
-
-      await Sentry.captureException(
-        exception,
-        stackTrace: stacktrace,
       );
     }
   }
