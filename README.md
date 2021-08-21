@@ -1,6 +1,11 @@
 # club-app-2021
 KnightHacks Club app for member tracking and other admin purposes.
 
+## Before Building
+Create a .env file at the project root and contact one of the Knight Hacks team members to get the DSN.
+The file contents should look like
+```DSN=<DSN key here> ```
+
 ## Building on iOS
 
 For the very first build on iOS, follow these steps. For all subsequent builds, these steps will not be needed.

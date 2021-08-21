@@ -10,8 +10,10 @@ import 'package:club_app_2021/screens/error.dart';
 import 'package:club_app_2021/screens/faq.dart';
 import 'package:club_app_2021/screens/confirm.dart';
 import 'package:club_app_2021/screens/resetpassword.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future main() async {
+  await dotenv.load(fileName: ".env");
   runApp(MyApp());
 }
 
