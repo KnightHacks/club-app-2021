@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:club_app_2021/screens/error.dart';
+import 'package:sentry/sentry.dart';
 
 class ResetPassword extends StatefulWidget {
   static const id = 'ResetPassword';
@@ -58,9 +59,12 @@ class _ResetPassword extends State<ResetPassword> {
                        );
                      },
                    );
-                    } catch (e) {
-                      //if the email does not exist or there is some error
+                    } catch (exception, stacktrace) {
                       Navigator.pushNamed(context, Error.id);
+                      await Sentry.captureException(
+                        exception,
+                        stackTrace: stacktrace
+                      );
                     }
                   },
                   buttonColor: Colors.amber,

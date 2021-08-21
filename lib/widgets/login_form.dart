@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:club_app_2021/widgets/rounded_button.dart';
 import 'package:club_app_2021/screens/resetpassword.dart';
+import 'package:sentry/sentry.dart';
 
 class LoginForm extends StatefulWidget {
   @override
@@ -67,8 +68,11 @@ class _LoginFormState extends State<LoginForm> {
           );
         }
       
-    } catch(e) {
-      throw e;
+    } catch(exception, stacktrace) {
+      await Sentry.captureException(
+        exception,
+        stackTrace: stacktrace,
+      );
     }
   }
 

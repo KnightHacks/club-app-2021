@@ -10,6 +10,7 @@ import 'package:club_app_2021/widgets/tshirt_selector.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:club_app_2021/model/Prop.dart';
+import 'package:sentry/sentry.dart';
 
 class AccountEdit extends StatefulWidget {
   static const String id = "AccountEdit";
@@ -28,7 +29,7 @@ class _AccountEditState extends State<AccountEdit> {
   ShirtSize _shirtSize = ShirtSize.M;
   late KnightHackUser khUser;
 
-  void _presetText() {
+  void _presetText() async {
     try {
       final Prop prop = ModalRoute.of(context)!.settings.arguments as Prop;
       khUser = prop.knightHackUser;
@@ -40,21 +41,25 @@ class _AccountEditState extends State<AccountEdit> {
       _stateController.text = khUser.state;
       _zipController.text = khUser.zip;
       _shirtSize = khUser.shirtSize;
-    } catch (e) {
-      print(e.toString());
+    } catch (exception, stacktrace) {
       showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: Text("Unable to load account info."),
-                actions: <Widget>[
-                  new TextButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      child: Text("Close"))
-                ],
-              );
-            },
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Unable to load account info."),
+            actions: <Widget>[
+              new TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text("Close"))
+            ],
           );
+        },
+      );
+
+      await Sentry.captureException(
+        exception,
+        stackTrace: stacktrace,
+      );
     }
   }
 
@@ -91,8 +96,7 @@ class _AccountEditState extends State<AccountEdit> {
           print(updatedUser.summary());
           Navigator.pop(context, updatedUser);
         })
-        .catchError((error) {
-          print(error.toString());
+        .catchError((exception, stacktrace) async {
           showDialog(
             context: context,
             builder: (BuildContext context) {
@@ -105,6 +109,10 @@ class _AccountEditState extends State<AccountEdit> {
                 ],
               );
             },
+          );
+          Sentry.captureException(
+            exception,
+            stackTrace: stacktrace,
           );
         });
   }
