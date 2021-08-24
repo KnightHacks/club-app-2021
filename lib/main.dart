@@ -10,9 +10,18 @@ import 'package:club_app_2021/screens/error.dart';
 import 'package:club_app_2021/screens/faq.dart';
 import 'package:club_app_2021/screens/confirm.dart';
 import 'package:club_app_2021/screens/resetpassword.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
+  await SentryFlutter.init(
+    (options) => {
+      options.dsn = dotenv.env['SENTRY_DSN'],
+      options.enableOutOfMemoryTracking = false
+    },
+    appRunner: () => runApp(MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {

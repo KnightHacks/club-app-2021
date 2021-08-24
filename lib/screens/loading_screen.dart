@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:club_app_2021/model/ShirtSize.dart';
 import 'package:club_app_2021/model/KnightHacksUser.dart';
 import 'package:club_app_2021/screens/home.dart';
+import 'package:sentry/sentry.dart';
 
 class LoadingScreen extends StatefulWidget {
   static const String id = "Loading";
@@ -98,8 +99,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
         _khUser!.email = user.email!;
       });
       // print(_khUser!.summary());
-    } catch (e) {
-      print(e.toString());
+    } catch (exception, stacktrace) {
+      await Sentry.captureException(
+        exception,
+        stackTrace: stacktrace,
+      );
     }
     return _khUser!;
   }

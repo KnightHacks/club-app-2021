@@ -29,6 +29,8 @@ jobs:
         channel: 'stable' # 'dev', 'alpha', default to: 'stable'
         flutter-version: '2.0.4' # current version
     
+    # Add dsn and .env
+    - run: echo "DSN=${{ secrets.SENTRY_DSN }}" > .env
     # Get flutter dependencies.
     - run: flutter pub get
     

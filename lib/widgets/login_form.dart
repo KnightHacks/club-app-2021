@@ -67,8 +67,8 @@ class _LoginFormState extends State<LoginForm> {
           );
         }
       
-    } catch(e) {
-      throw e;
+    } catch(exception) {
+      throw(exception);
     }
   }
 

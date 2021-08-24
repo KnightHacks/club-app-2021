@@ -9,6 +9,7 @@ import '../widgets/title_bar.dart';
 import 'package:club_app_2021/constants.dart';
 import 'package:email_validator/email_validator.dart';
 import '../model/ShirtSize.dart';
+import 'package:sentry/sentry.dart';
 
 class Register2 extends StatefulWidget {
   static const String id = "Register2";
@@ -121,10 +122,11 @@ class _Register2State extends State<Register2> {
                           });
                           try {
                             await user.sendEmailVerification();
-                          } catch (e) {
-                            print(
-                                "Something went wrong while sending your email verification.");
-                            print(e.toString());
+                          } catch (exception, stacktrace) {
+                            await Sentry.captureException(
+                              exception,
+                              stackTrace: stacktrace,
+                            );
                           }
 
                           //Navigator.popAndPushNamed(context, Confirm.id);
